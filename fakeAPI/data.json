@@ -1,0 +1,25 @@
+{
+  "options": [
+    {
+      "value": "option1",
+      "label": "Hola"
+    },
+    {
+      "value": "option2",
+      "label": "Buenos dias"
+    },
+    {
+      "value": "option3",
+      "label": "Gracias"
+    },
+    {
+      "value": "option4",
+      "label": "Porfavor"
+    },
+    {
+      "value": "option5",
+      "label": "No entiendo"
+    }
+    
+  ]
+}
