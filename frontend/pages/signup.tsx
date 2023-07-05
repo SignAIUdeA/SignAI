@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import React from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import Logo from "@/components/Logo";
+import { ApiService } from "@/common/api.service";
 
 const signin = () => {
 
@@ -14,9 +15,11 @@ const signin = () => {
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
-    console.log(credentials)
-    const res = await axios.post("http://127.0.0.1:8000/user/", credentials).catch((e)=>{console.log(e)})
-    console.log(res);
+    // console.log(credentials)
+    // const res = await axios.post("http://127.0.0.1:8000/user/", credentials).catch((e)=>{console.log(e)})
+    // console.log(res);
+    const res = await ApiService.post('user/', credentials)
+    console.log(res)
   };
   
 

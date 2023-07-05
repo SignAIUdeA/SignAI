@@ -1,6 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Logo from "@/components/Logo";
+import { ApiService } from "@/common/api.service";
 
 
 const LoginPage = () => {
@@ -11,16 +12,17 @@ const LoginPage = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
   
-  const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/',
-    timeout: 5000,
-    headers: {'Content-Type': 'application/json'}
-  });
+  // const instance = axios.create({
+  //   baseURL: 'http://127.0.0.1:8000/',
+  //   timeout: 5000,
+  //   headers: {'Content-Type': 'application/json'}
+  // });
 
 
   const handleSubmit = async (e: any) => {
     {/*ESTO ENVÍA LOS DATOS DE LOGIN AL BACK END*/ }
     e.preventDefault();
+    const res = await ApiService.post('auth/login/', credentials)
     const res = await instance.post("auth/login/", credentials).then((res) => {
       instance.defaults.headers.post['Authorization'] = `${res.data.token_type} ${res.data.access_token}`
       console.log(res)
