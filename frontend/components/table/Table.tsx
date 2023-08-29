@@ -1,8 +1,16 @@
 import style from "./table.module.css";
 import { getAllUsers } from "./table.services";
+import {
+  IconDelete,
+  IconDetails,
+  IconEdit,
+  IconUserBackground,
+} from "@/icons/Icons";
 
 function Table() {
   const users = getAllUsers();
+
+  console.log(style);
 
   return (
     <table className={style.Table}>
@@ -21,14 +29,25 @@ function Table() {
               key={index}
               className={index % 2 === 0 ? "bg-[#EBF4ED]" : "bg-white"}>
               <td className={`${style.TableRowFirstChild} ${style.Cell}`}>
-                {name}
+                <div className="flex gap-[0.625rem] items-center">
+                  <IconUserBackground />
+                  {name}
+                </div>
               </td>
               <td className={style.Cell}>{position} LSC</td>
               <td className={style.Cell}>{created_at}</td>
               <td className={`${style.TableRowLastChild} ${style.Cell}`}>
-                <button>DEL</button>
-                <button>UPD</button>
-                <button>DET</button>
+                <div className={style.WrapperButtons}>
+                  <button className={style.Button}>
+                    <IconDelete />
+                  </button>
+                  <button className={style.Button}>
+                    <IconEdit />
+                  </button>
+                  <button className={style.Button}>
+                    <IconDetails />
+                  </button>
+                </div>
               </td>
             </tr>
           );
