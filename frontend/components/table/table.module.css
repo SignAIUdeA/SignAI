@@ -3,7 +3,7 @@
   --Gray-Ligth: #5f5f5f;
   --Weigth-SemiBold: 600;
   --Weigth-Medium: 00;
-  width: 80%;
+  width: 60%;
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
@@ -30,9 +30,16 @@
 }
 
 .Cell {
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
+  padding: 0.625rem;
   color: var(--Gray-Ligth);
   font-size: 0.875rem;
   font-weight: var(--Weigth-Medium);
+}
+
+.WrapperButtons {
+  @apply flex gap-[10px] items-center;
+}
+
+.Button {
+  @apply bg-[transparent] w-[1.5rem] h-[1.5rem] flex justify-center items-center p-0 m-0;
 }
