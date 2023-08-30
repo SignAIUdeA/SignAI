@@ -1,0 +1,45 @@
+.Table {
+  --Green-Hard: #026937;
+  --Gray-Ligth: #5f5f5f;
+  --Weigth-SemiBold: 600;
+  --Weigth-Medium: 00;
+  width: 60%;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.TableHead {
+  font-size: var(--Weigth-SemiBold);
+  font-weight: 600;
+  color: var(--Green-Hard);
+}
+
+.CellHead {
+  padding: 0.625rem;
+}
+
+.TableRowFirstChild {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.TableRowLastChild {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.Cell {
+  padding: 0.625rem;
+  color: var(--Gray-Ligth);
+  font-size: 0.875rem;
+  font-weight: var(--Weigth-Medium);
+}
+
+.WrapperButtons {
+  @apply flex gap-[10px] items-center;
+}
+
+.Button {
+  @apply bg-[transparent] w-[1.5rem] h-[1.5rem] flex justify-center items-center p-0 m-0;
+}
