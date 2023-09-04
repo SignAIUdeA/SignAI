@@ -1,3 +1,4 @@
+import TagPosition from "../tag-position/TagPosition";
 import style from "./table.module.css";
 import { getAllUsers } from "./table.services";
 import {
@@ -34,7 +35,9 @@ function Table() {
                   {name}
                 </div>
               </td>
-              <td className={style.Cell}>{position} LSC</td>
+              <td className={style.Cell}>
+                <TagPosition />
+              </td>
               <td className={style.Cell}>{created_at}</td>
               <td className={`${style.TableRowLastChild} ${style.Cell}`}>
                 <div className={style.WrapperButtons}>
