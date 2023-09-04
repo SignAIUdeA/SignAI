@@ -1,24 +1,32 @@
 import { useState, ChangeEvent, FormEvent } from "react";
+import useForm, { FormObject } from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
 
-interface FormData {
-  user: string;
-  password: string;
-}
+const userData: FormObject = {
+  user: "",
+  password: "",
+};
 
 const Login = () => {
-  const [formData, setFormData] = useState<FormData>({
-    user: "",
-    password: "",
-  });
+  const { inputs, handleChange } = useForm(userData);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined
+  );
 
-  const submitForm = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const user = inputs.user;
+    const password = inputs.password;
+
+    if (user.length === 0) setErrorMessage("El campo usuario es obligatorio");
+    else if (password.length === 0)
+      setErrorMessage("El campo contraseña es obligatorio");
+
+    setInterval(() => {
+      setErrorMessage(undefined);
+    }, 10000);
   };
 
   return (
@@ -35,7 +43,11 @@ const Login = () => {
         </div>
       </section>
       <section className={styles.RightPanel}>
-        <form onSubmit={submitForm} className={styles.Form}>
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+          className={styles.Form}>
           <h2 className={`${styles.green} ${styles.FormHeader}`}>
             Iniciar Sesión
           </h2>
@@ -45,9 +57,8 @@ const Login = () => {
               className={styles.Input}
               type="text"
               name="user"
-              value={formData.user}
               onChange={handleChange}
-              required
+              // required
             />
           </label>
           <label htmlFor="password" className={styles.Label}>
@@ -56,14 +67,21 @@ const Login = () => {
               className={styles.Input}
               type="password"
               name="password"
-              value={formData.password}
               onChange={handleChange}
-              required
+              // required
             />
           </label>
           <button type="submit" className={styles.ButtonForm}>
             Ingresar
           </button>
+          <p
+            className={
+              errorMessage
+                ? `${styles.ErrorMessage} ${styles.ErrorMessageVisible}`
+                : styles.ErrorMessage
+            }>
+            {errorMessage}
+          </p>
         </form>
       </section>
       <figure className={styles.LogoContainer}>
