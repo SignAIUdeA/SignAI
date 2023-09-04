@@ -54,7 +54,7 @@
   align-items: center;
   gap: 2rem;
   padding: 3rem 1.5rem;
-  border-radius: 20px;
+  border-radius: 0.625rem;
   background-color: var(--white);
   box-shadow: var(--shadow);
 }
@@ -121,4 +121,19 @@
   position: absolute;
   bottom: 3rem;
   right: 3rem;
+}
+
+.ErrorMessage {
+  margin-top: -1rem;
+  margin-bottom: -2rem;
+  font-size: 0.8rem;
+  font-weight: var(--font-semibold);
+  color: var(--error);
+  width: 100%;
+  visibility: hidden;
+  animation: visibility 0.3s ease-in;
+}
+
+.ErrorMessageVisible {
+  visibility: visible;
 }
