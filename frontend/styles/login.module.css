@@ -1,0 +1,139 @@
+.Container {
+  display: flex;
+  height: 100vh;
+}
+
+.LeftPanel {
+  width: 40%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--white);
+}
+
+.RightPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-image: var(--bg-secondary);
+  background-repeat: no-repeat;
+  clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.WrapperLogo {
+  display: flex;
+  flex-direction: column;
+}
+
+.Logo {
+  font-size: 4rem;
+  font-weight: var(--font-bold);
+  line-height: normal;
+  color: var(--green-dark);
+}
+
+.Slogan {
+  font-size: 1rem;
+  font-weight: var(--font-semibold);
+  line-height: 2.5rem;
+  color: var(--green-mid);
+}
+
+.ContactSection {
+  font-size: 1rem;
+  line-height: 3rem;
+  color: var(--grey-light);
+}
+
+.Form {
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  border-radius: 0.625rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.FormHeader {
+  text-align: center;
+  font-weight: var(--font-bold);
+  font-size: 2rem;
+  color: var(--green-dark);
+  line-height: normal;
+}
+
+.Label {
+  display: block;
+  width: 100%;
+}
+
+.LabelText {
+  font-size: 1rem;
+  font-weight: var(--font-mid);
+  color: var(--grey-light);
+}
+
+.Input {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--grey-light);
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: var(--grey-dark);
+  outline: none;
+}
+
+.Input[type="password"] {
+  font-weight: var(--font-bold);
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.ButtonForm {
+  width: 100%;
+  color: #ffffff;
+  background-image: var(--bg-main);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 1.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.ButtonForm:hover {
+  background-image: var(--bg-secondary);
+  box-shadow: var(--shadow);
+}
+
+.LogoContainer {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+}
+
+.ErrorMessage {
+  margin-top: -1rem;
+  margin-bottom: -2rem;
+  font-size: 0.8rem;
+  font-weight: var(--font-semibold);
+  color: var(--error);
+  width: 100%;
+  visibility: hidden;
+  animation: visibility 0.3s ease-in;
+}
+
+.ErrorMessageVisible {
+  visibility: visible;
+}

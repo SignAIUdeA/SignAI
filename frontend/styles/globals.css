@@ -12,6 +12,7 @@
   --grey-dark: #393636;
   --grey-light: #5f5f5f;
   --white: #fff;
+  --error: rgb(252, 68, 68);
   --bg-main: linear-gradient(120deg, #026937 0%, #35944b 100%);
   --bg-secondary: linear-gradient(306deg, #026937 0%, #35944b 100%);
   --bg-item-navbar: linear-gradient(90deg, #43b649 0%, #12803f 100%);
