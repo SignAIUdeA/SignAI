@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import useForm, { FormObject } from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
 
@@ -24,9 +24,9 @@ const Login = () => {
     else if (password.length === 0)
       setErrorMessage("El campo contraseña es obligatorio");
 
-    setInterval(() => {
+    setTimeout(() => {
       setErrorMessage(undefined);
-    }, 10000);
+    }, 5000);
   };
 
   return (
@@ -44,6 +44,7 @@ const Login = () => {
       </section>
       <section className={styles.RightPanel}>
         <form
+          action="POST"
           onSubmit={(e) => {
             handleSubmit(e);
           }}
@@ -58,7 +59,7 @@ const Login = () => {
               type="text"
               name="user"
               onChange={handleChange}
-              // required
+              required
             />
           </label>
           <label htmlFor="password" className={styles.Label}>
@@ -68,7 +69,7 @@ const Login = () => {
               type="password"
               name="password"
               onChange={handleChange}
-              // required
+              required
             />
           </label>
           <button type="submit" className={styles.ButtonForm}>
