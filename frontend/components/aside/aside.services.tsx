@@ -16,16 +16,16 @@ export const SidebarData: SidebarDataItemType[] = [
     {
         title: 'Subir Señas',
         icon: <MdFileUpload className='h-8 w-8'/>,
-        link: ''
+        link: '/uploadfile'
     },
     {
         title: 'Análisis de Datos',
         icon: <MdLeaderboard className='h-8 w-8'/>,
-        link: ''
+        link: '/dashboard'
     },
     {
         title: 'Configurar Perfil',
         icon: <MdManageAccounts className='h-8 w-8'/>,
-        link: ''
+        link: '/profile'
     }
 ]
