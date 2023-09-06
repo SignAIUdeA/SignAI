@@ -1,6 +1,9 @@
 import { useState, FormEvent } from "react";
 import useForm, { FormObject } from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
+import { validateCredentials } from "@/functions/validations";
+import { handleLogin } from "@/functions/login";
+import { AuthResponse } from "@/types/types";
 
 const userData: FormObject = {
   user: "",
@@ -14,15 +17,27 @@ const Login = () => {
     undefined
   );
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const user = inputs.user;
-    const password = inputs.password;
+    const { user, password } = inputs;
+    const { isValidate, message } = validateCredentials({ user, password });
 
-    if (user.length === 0) setErrorMessage("El campo usuario es obligatorio");
-    else if (password.length === 0)
-      setErrorMessage("El campo contraseña es obligatorio");
+    if (isValidate) {
+      const { ok, authResponse, messageError } = await handleLogin({
+        user,
+        password,
+      });
+      if (ok) {
+        const authInfo = authResponse as AuthResponse;
+        sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
+        alert("Se ha iniciado sesión");
+        return;
+      }
+      setErrorMessage(messageError);
+    } else {
+      setErrorMessage(message);
+    }
 
     setTimeout(() => {
       setErrorMessage(undefined);
@@ -59,7 +74,7 @@ const Login = () => {
               type="text"
               name="user"
               onChange={handleChange}
-              required
+              // required
             />
           </label>
           <label htmlFor="password" className={styles.Label}>
@@ -69,10 +84,13 @@ const Login = () => {
               type="password"
               name="password"
               onChange={handleChange}
-              required
+              // required
             />
           </label>
-          <button type="submit" className={styles.ButtonForm}>
+          <button
+            type="submit"
+            className={styles.ButtonForm}
+            disabled={errorMessage ? true : false}>
             Ingresar
           </button>
           <p
