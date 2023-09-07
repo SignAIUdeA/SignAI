@@ -4,6 +4,7 @@ import styles from "@/styles/login.module.css";
 import { validateCredentials } from "@/functions/validations";
 import { handleLogin } from "@/functions/login";
 import { AuthResponse } from "@/types/types";
+import { useRouter } from "next/router";
 
 const userData: FormObject = {
   user: "",
@@ -12,6 +13,7 @@ const userData: FormObject = {
 
 const Login = () => {
   const { inputs, handleChange } = useForm(userData);
+  const router = useRouter();
 
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
@@ -31,7 +33,7 @@ const Login = () => {
       if (ok) {
         const authInfo = authResponse as AuthResponse;
         sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
-        alert("Se ha iniciado sesión");
+        router.push("/components");
         return;
       }
       setErrorMessage(messageError);
@@ -74,7 +76,7 @@ const Login = () => {
               type="text"
               name="user"
               onChange={handleChange}
-              // required
+              required
             />
           </label>
           <label htmlFor="password" className={styles.Label}>
@@ -84,7 +86,7 @@ const Login = () => {
               type="password"
               name="password"
               onChange={handleChange}
-              // required
+              required
             />
           </label>
           <button
