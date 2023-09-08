@@ -2,6 +2,7 @@ interface IconProps {
   width?: string;
   height?: string;
   fill?: string;
+  rotate?: string;
 }
 
 const GRAY_LIGHT = "#5F5F5F";
@@ -81,6 +82,24 @@ export const IconEdit = ({
   );
 };
 
+export const IconLogout = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = GRAY_LIGHT,
+}: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      style={{ fill }}>
+      <path d="m2 12 5 4v-3h9v-2H7V8z" />
+      <path d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z" />
+    </svg>
+  );
+};
+
 export const IconDetails = ({
   width = DEFAULT_SIZE_ICONS,
   height = DEFAULT_SIZE_ICONS,
@@ -95,6 +114,58 @@ export const IconDetails = ({
       style={{ fill }}>
       <path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V5h16l.002 14H4z"></path>
       <path d="M6 7h12v2H6zm0 4h12v2H6zm0 4h6v2H6z"></path>
+    </svg>
+  );
+};
+
+export const IconArrow = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = GRAY_LIGHT,
+  rotate = "180deg",
+}: IconProps) => {
+  return (
+    <div
+      style={{
+        transform: `rotate(${rotate})`,
+      }}>
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 10 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8.75 1.5L1.25 9L8.75 16.5"
+          stroke={fill}
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const IconFilter = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = GRAY_LIGHT,
+}: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke={fill}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
+      />
     </svg>
   );
 };
