@@ -169,3 +169,30 @@ export const IconFilter = ({
     </svg>
   );
 };
+
+export const IconSidebar = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="8" fill="url(#paint0_linear_148_286)" />
+    <path
+      d="M8 15H20V17H8V15ZM8 10H24V12H8V10ZM8 22H15.235V20H8V22Z"
+      fill="white"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_148_286"
+        x1="1.30472"
+        y1="7.27273"
+        x2="26.8128"
+        y2="8.09756"
+        gradientUnits="userSpaceOnUse">
+        <stop stopColor="#026937" />
+        <stop offset="1" stopColor="#35944B" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
