@@ -1,5 +1,7 @@
-import Layout from '@/layouts/Layout'
 import React from 'react'
+import Layout from '@/layouts/Layout'
+import Card from '@/components/card/Card'
+import { CardData } from '@/components/card/card.services'
 
 const ProfesionalDashboard = () => {
   return (
@@ -17,7 +19,7 @@ const ProfesionalDashboard = () => {
                     <button>der</button>
                 </div>
             </div>
-            <DesktopTable/>
+            <DesktopCards/>
             <MobileCards/>
         </div>
       </Layout>
@@ -25,37 +27,29 @@ const ProfesionalDashboard = () => {
   )
 }
 
-const DesktopTable = () => {
-  return(
-    <div className='hidden md:flex h-full flex-col'>
-      <div className='h-full mt-6 debug'>tabla</div>
-      <div>paginacion</div>
+const DesktopCards = () => {
+  return (
+    <div className='hidden md:grid h-full mt-6 justify-items-center debug overflow-y-auto'>
+      <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        {CardData.map((item, index) => (
+          <Card key={index} name={item.name} date={item.date} label={item.label} />
+        ))}
+      </div>
     </div>
   );
 };
+
 const MobileCards = () =>{
   return(
-    <div className='grid grid-cols-2 h-full md:hidden'>
-      <div className='flex flex-col debug'>
-        <div>Imagen</div>
-        <div className='flex flex-col'>
-          <span>Nombre</span>
-          <span>Fecha</span>
-          <span>Etiqueta</span>
-          <button>Etiquetar</button>
-        </div>
-      </div>
-      <div className='flex flex-col debug'>
-        <div>Imagen</div>
-        <div className='flex flex-col'>
-          <span>Nombre</span>
-          <span>Fecha</span>
-          <span>Etiqueta</span>
-          <button>Etiquetar</button>
-        </div>
+    <div className='md:hidden sm:grid h-full mt-6 justify-items-center debug'>
+      <div className='grid sm:grid-cols-2'>
+        {CardData.map((item, index) => (
+          <Card key={index} name={item.name} date={item.date} label={item.label} />
+        ))}
       </div>
     </div>
   );
 };
+
 
 export default ProfesionalDashboard

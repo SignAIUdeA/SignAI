@@ -1,6 +1,6 @@
 
 import Navbar from '@/components/Navbar';
-import { ProvisionalSidebar } from '@/components/ProvisionalSidebar';
+import { ProvisionalSidebar } from '@/components/aside/ProvisionalSidebar';
 import React from 'react'
 
 interface LayoutProps {
