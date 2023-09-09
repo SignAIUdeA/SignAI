@@ -1,6 +1,6 @@
 import Link from "next/link";
 import style from "./info-user.module.css";
-import { IconLogout, IconUserBackground } from "@/icons/Icons";
+import { IconLogout, IconAvatarUser } from "@/icons/Icons";
 import { UserInfo } from "./info-user.types";
 
 const InfoUser = ({ name, role }: UserInfo) => {
@@ -15,7 +15,7 @@ const InfoUser = ({ name, role }: UserInfo) => {
         <span className={style.RoleUser}>{role}</span>
       </div>
       <div className={style.WrapperAvatar}>
-        <IconUserBackground />
+        <IconAvatarUser />
       </div>
     </section>
   );

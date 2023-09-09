@@ -5,7 +5,7 @@ import {
   IconDelete,
   IconDetails,
   IconEdit,
-  IconUserBackground,
+  IconAvatarUser,
 } from "@/icons/Icons";
 
 function Table() {
@@ -31,7 +31,7 @@ function Table() {
               className={index % 2 === 0 ? "bg-[#EBF4ED]" : "bg-white"}>
               <td className={`${style.TableRowFirstChild} ${style.Cell}`}>
                 <div className="flex gap-[0.625rem] items-center">
-                  <IconUserBackground />
+                  <IconAvatarUser />
                   {name}
                 </div>
               </td>

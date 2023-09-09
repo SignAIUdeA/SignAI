@@ -26,24 +26,40 @@ export const IconUser = ({
   );
 };
 
-export const IconUserBackground = ({
+export const IconAvatarUser = ({
   width = "2rem",
   height = "2rem",
-  fill = "linear-gradient(180deg, #43B649 0%, #069A7E 100%)",
 }: IconProps) => {
   return (
-    <div
-      style={{
-        width,
-        height,
-        background: fill,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: "50%",
-      }}>
-      <IconUser />
-    </div>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 33 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <circle
+        cx="16.002"
+        cy="16.001"
+        r="16"
+        fill="url(#paint0_linear_127_28)"
+      />
+      <path
+        d="M12.002 10.001C12.002 12.2063 13.7966 14.001 16.002 14.001C18.2073 14.001 20.002 12.2063 20.002 10.001C20.002 7.79564 18.2073 6.00098 16.002 6.00098C13.7966 6.00098 12.002 7.79564 12.002 10.001ZM23.1131 22.8899H24.002V22.001C24.002 18.5708 21.21 15.7788 17.7797 15.7788H14.2242C10.7931 15.7788 8.00195 18.5708 8.00195 22.001V22.8899H23.1131Z"
+        fill="white"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_127_28"
+          x1="16.002"
+          y1="0.000976562"
+          x2="16.002"
+          y2="32.001"
+          gradientUnits="userSpaceOnUse">
+          <stop stopColor="#43B649" />
+          <stop offset="1" stopColor="#069A7E" />
+        </linearGradient>
+      </defs>
+    </svg>
   );
 };
 
@@ -85,7 +101,7 @@ export const IconEdit = ({
 export const IconLogout = ({
   width = DEFAULT_SIZE_ICONS,
   height = DEFAULT_SIZE_ICONS,
-  fill = GRAY_LIGHT,
+  fill = WHITE,
 }: IconProps) => {
   return (
     <svg
@@ -169,30 +185,3 @@ export const IconFilter = ({
     </svg>
   );
 };
-
-export const IconSidebar = () => (
-  <svg
-    width="32"
-    height="32"
-    viewBox="0 0 32 32"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="8" fill="url(#paint0_linear_148_286)" />
-    <path
-      d="M8 15H20V17H8V15ZM8 10H24V12H8V10ZM8 22H15.235V20H8V22Z"
-      fill="white"
-    />
-    <defs>
-      <linearGradient
-        id="paint0_linear_148_286"
-        x1="1.30472"
-        y1="7.27273"
-        x2="26.8128"
-        y2="8.09756"
-        gradientUnits="userSpaceOnUse">
-        <stop stopColor="#026937" />
-        <stop offset="1" stopColor="#35944B" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
