@@ -1,0 +1,20 @@
+.Contact {
+  display: block;
+  position: relative;
+  width: fit-content;
+}
+
+.Contact::after {
+  position: absolute;
+  bottom: -0.3rem;
+  left: 0;
+  content: "";
+  width: 20%;
+  height: 3px;
+  transform-origin: 0;
+  transition: transform 300ms ease-in-out;
+}
+
+.Contact:hover::after {
+  transform: scaleX(3);
+}
