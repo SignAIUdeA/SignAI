@@ -1,5 +1,6 @@
 import Link from "next/link";
 import style from "@/styles/index.module.css";
+import Contact from "@/components/contact/Contact";
 
 const Index = () => {
   return (
@@ -21,9 +22,7 @@ const Index = () => {
             alt="Logo de la Universidad de Antioquia"
           />
         </figure>
-        <Link className={style.Contact} href={"/"}>
-          Contáctanos
-        </Link>
+        <Contact />
       </footer>
     </main>
   );
