@@ -5,6 +5,7 @@ import { validateCredentials } from "@/functions/validations";
 import { handleLogin } from "@/functions/login";
 import { AuthResponse } from "@/types/types";
 import { useRouter } from "next/router";
+import Contact from "@/components/contact/Contact";
 
 const userData: FormObject = {
   user: "",
@@ -55,9 +56,7 @@ const Login = () => {
             UNIENDO MUNDOS SEÑA POR SEÑA
           </span>
         </div>
-        <div className={styles.ContactSection}>
-          <span>Contáctanos</span>
-        </div>
+        <Contact className="text-[#393636] after:bg-[#393636]" />
       </section>
       <section className={styles.RightPanel}>
         <form
