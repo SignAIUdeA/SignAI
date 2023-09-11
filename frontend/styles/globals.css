@@ -28,6 +28,11 @@
   --font-bold: 700;
 }
 
+*::selection {
+  background-color: var(--green-dark);
+  color: var(--white);
+}
+
 .general {
   @apply flex flex-col place-items-center;
 }
