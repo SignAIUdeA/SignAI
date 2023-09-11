@@ -9,16 +9,16 @@ function Components() {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const router = useRouter();
 
-  useEffect(() => {
-    const auth = sessionStorage.getItem("authInfo");
-    if (auth) {
-      setIsLogin(true);
-      return;
-    } else {
-      router.push("/newlogin");
-      return;
-    }
-  }, []);
+  // useEffect(() => {
+  //   const auth = sessionStorage.getItem("authInfo");
+  //   if (auth) {
+  //     setIsLogin(true);
+  //     return;
+  //   } else {
+  //     router.push("/newlogin");
+  //     return;
+  //   }
+  // }, []);
 
   if (isLogin) {
     return (
