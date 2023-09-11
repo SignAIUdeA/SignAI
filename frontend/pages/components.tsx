@@ -1,4 +1,5 @@
 import FilterSection from "@/components/filter-section/FilterSection";
+import FormAddUser from "@/components/form-add-user/FormAddUser";
 import InfoUser from "@/components/info-user/InfoUser";
 import Table from "@/components/table/Table";
 import { useRouter } from "next/router";
@@ -8,16 +9,16 @@ function Components() {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   const auth = sessionStorage.getItem("authInfo");
-  //   if (auth) {
-  //     setIsLogin(true);
-  //     return;
-  //   } else {
-  //     router.push("/newlogin");
-  //     return;
-  //   }
-  // }, []);
+  useEffect(() => {
+    const auth = sessionStorage.getItem("authInfo");
+    if (auth) {
+      setIsLogin(true);
+      return;
+    } else {
+      router.push("/newlogin");
+      return;
+    }
+  }, []);
 
   if (isLogin) {
     return (
@@ -26,6 +27,7 @@ function Components() {
         <Table />
         <InfoUser name="Pedro Rodriguez" role="Administrador" />
         <FilterSection />
+        <FormAddUser />
       </main>
     );
   }
