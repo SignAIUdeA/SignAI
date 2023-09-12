@@ -1,0 +1,67 @@
+.Form {
+  position: relative;
+  padding: 3rem 2rem 2rem 2rem;
+  margin-top: 70px;
+  background: var(--bg-ligth);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 0.5rem;
+  color: var(--grey-dark);
+  font-size: 0.9rem;
+}
+
+.AvatarContainer {
+  position: absolute;
+  top: -70px;
+  left: calc(50% - 50px);
+}
+
+.FormTitle {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: var(--font-bold);
+  color: var(--green-dark);
+}
+
+.WrapperInputs {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.Side {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1.5rem;
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--grey-dark);
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.BtnForm {
+  width: 100%;
+  padding: 0.625rem;
+  color: var(--white);
+  background: var(--bg-main);
+  border-radius: 2rem;
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  transition: box-shadow 300ms ease-in;
+}
+
+.BtnForm:hover {
+  box-shadow: var(--shadow);
+}

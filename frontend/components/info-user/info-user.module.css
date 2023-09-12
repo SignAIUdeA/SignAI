@@ -1,0 +1,33 @@
+.SectionInfoUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: fit-content;
+}
+
+.BtnLogout {
+  background: var(--bg-main);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-weight: var(--font-semibold);
+  transition: box-shadow 300ms ease-in;
+}
+
+.BtnLogout:hover {
+  box-shadow: var(--shadow);
+}
+
+.WrapperDataUser {
+  color: var(--grey-dark);
+  font-size: 80%;
+}
+
+.NameUser {
+  text-transform: uppercase;
+  font-weight: var(--font-semibold);
+}

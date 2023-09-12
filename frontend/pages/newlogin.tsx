@@ -1,6 +1,11 @@
 import { useState, FormEvent } from "react";
 import useForm, { FormObject } from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
+import { validateCredentials } from "@/functions/validations";
+import { handleLogin } from "@/functions/login";
+import { AuthResponse } from "@/types/types";
+import { useRouter } from "next/router";
+import Contact from "@/components/contact/Contact";
 
 const userData: FormObject = {
   user: "",
@@ -9,20 +14,33 @@ const userData: FormObject = {
 
 const Login = () => {
   const { inputs, handleChange } = useForm(userData);
+  const router = useRouter();
 
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
   );
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const user = inputs.user;
-    const password = inputs.password;
+    const { user, password } = inputs;
+    const { isValidate, message } = validateCredentials({ user, password });
 
-    if (user.length === 0) setErrorMessage("El campo usuario es obligatorio");
-    else if (password.length === 0)
-      setErrorMessage("El campo contraseña es obligatorio");
+    if (isValidate) {
+      const { ok, authResponse, messageError } = await handleLogin({
+        user,
+        password,
+      });
+      if (ok) {
+        const authInfo = authResponse as AuthResponse;
+        sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
+        router.push("/components");
+        return;
+      }
+      setErrorMessage(messageError);
+    } else {
+      setErrorMessage(message);
+    }
 
     setTimeout(() => {
       setErrorMessage(undefined);
@@ -38,9 +56,7 @@ const Login = () => {
             UNIENDO MUNDOS SEÑA POR SEÑA
           </span>
         </div>
-        <div className={styles.ContactSection}>
-          <span>Contáctanos</span>
-        </div>
+        <Contact className="text-[#393636] after:bg-[#393636]" />
       </section>
       <section className={styles.RightPanel}>
         <form
@@ -72,7 +88,10 @@ const Login = () => {
               required
             />
           </label>
-          <button type="submit" className={styles.ButtonForm}>
+          <button
+            type="submit"
+            className={styles.ButtonForm}
+            disabled={errorMessage ? true : false}>
             Ingresar
           </button>
           <p
