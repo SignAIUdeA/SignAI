@@ -29,7 +29,7 @@ export const validateFieldsAddForm = (
   userFormData: UserForm
 ): ResponseValidateCredentials => {
   let message = "";
-  let isValidate = false;
+  let isValidate = true;
 
   const {
     name,
@@ -46,8 +46,44 @@ export const validateFieldsAddForm = (
     (elem) => elem.length === 0
   );
 
-  if (fieldEmpty.length === 0)
-    return { isValidate, message: "Error, todos los campos son obligatorios" };
+  if (fieldEmpty.length !== 0)
+    return {
+      isValidate: false,
+      message: "Error, todos los campos son obligatorios",
+    };
+  else if (!isEmailValid(email))
+    return { isValidate: false, message: "El campo email es incorrecto" };
+  else if (!isDocumentValid(document))
+    return {
+      isValidate: false,
+      message:
+        "El documento no puede contener números, espacios o caracteres especiales",
+    };
+  else if (!isPositonValid(position)) {
+    return {
+      isValidate: false,
+      message: "Cargo no válido para el sistema",
+    };
+  }
+  return { isValidate };
+};
 
-  return { isValidate, message };
+export const isEmailValid = (email: string): boolean => {
+  const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegExp.test(email);
+};
+
+export const isDocumentValid = (document: string): boolean => {
+  const numerosRegExp = /^[0-9]+$/;
+  return numerosRegExp.test(document);
+};
+
+export const isPositonValid = (position: string): boolean => {
+  if (
+    position === "Auxiliar" ||
+    position === "Profesional" ||
+    position === "Administrador"
+  )
+    return true;
+  return false;
 };
