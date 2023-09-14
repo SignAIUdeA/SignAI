@@ -2,8 +2,38 @@ import styles from "./form-update-user.module.css";
 
 const FormUpdateUser = () => {
   return (
-    <form method="POST">
-      <h2>Actualizar Información</h2>
+    <form method="POST" className={styles.Form}>
+      <h2 className={styles.FormTitle}>Actualizar Información</h2>
+      <label htmlFor="name">
+        Nombres
+        <input className={styles.Input} type="text" name="name" id="name" />
+      </label>
+      <label htmlFor="password">
+        Contraseña
+        <input
+          className={styles.Input}
+          type="password"
+          name="password"
+          id="password"
+        />
+      </label>
+      <label htmlFor="confirmPassword">
+        Repetir contraseña
+        <input
+          className={styles.Input}
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+        />
+      </label>
+      <section className={styles.WrapperButtons}>
+        <button className={`${styles.Btn} ${styles.BtnCancel}`}>
+          Cancelar
+        </button>
+        <button className={`${styles.Btn} ${styles.BtnUpdate}`}>
+          Actualizar
+        </button>
+      </section>
     </form>
   );
 };
