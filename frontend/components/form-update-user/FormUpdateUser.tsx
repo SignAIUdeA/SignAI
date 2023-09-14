@@ -1,6 +1,10 @@
 import styles from "./form-update-user.module.css";
 
-const FormUpdateUser = () => {
+interface Props {
+  setShowModal: (showModal: boolean) => void;
+}
+
+const FormUpdateUser = ({ setShowModal }: Props) => {
   return (
     <form method="POST" className={styles.Form}>
       <h2 className={styles.FormTitle}>Actualizar Información</h2>
@@ -27,7 +31,9 @@ const FormUpdateUser = () => {
         />
       </label>
       <section className={styles.WrapperButtons}>
-        <button className={`${styles.Btn} ${styles.BtnCancel}`}>
+        <button
+          onClick={() => setShowModal(false)}
+          className={`${styles.Btn} ${styles.BtnCancel}`}>
           Cancelar
         </button>
         <button className={`${styles.Btn} ${styles.BtnUpdate}`}>
