@@ -18,7 +18,7 @@ export const validateCredentials = ({
   let message = "Todos los campos son correctos";
   let isValidate = true;
 
-  if (!haveEmptyFields([user, password])) {
+  if (haveEmptyFields([user, password])) {
     if (user.length === 0) {
       message = "El campo usuario es obligatorio";
       isValidate = false;
