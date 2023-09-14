@@ -1,10 +1,11 @@
 import { IconAvatarUser } from "@/icons/Icons";
 import styles from "./form-add-user.module.css";
-import useForm, { FormObject } from "@/hooks/useForm";
+import useForm from "@/hooks/useForm";
 import { FormEvent } from "react";
 import { validateFieldsAddForm } from "@/functions/validations";
+import { NewUser } from "./form-add-user.types";
 
-const userDataForm: FormObject = {
+const userDataForm: NewUser = {
   name: "",
   lastName: "",
   username: "",
@@ -16,30 +17,12 @@ const userDataForm: FormObject = {
 };
 
 const FormAddUser = () => {
-  const { inputs, handleChange } = useForm(userDataForm);
+  const { inputs, handleChange } = useForm<NewUser>(userDataForm);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const {
-      name,
-      lastName,
-      username,
-      document,
-      position,
-      email,
-      university,
-      location,
-    } = inputs;
-    const responseValidation = validateFieldsAddForm({
-      name,
-      lastName,
-      username,
-      document,
-      position,
-      email,
-      university,
-      location,
-    });
+
+    const responseValidation = validateFieldsAddForm(inputs);
 
     if (responseValidation.isValidate) {
       alert("¡El usuario fue creado con exito!");

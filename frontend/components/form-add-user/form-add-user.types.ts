@@ -1,4 +1,6 @@
-export interface UserForm {
+import { StringDictionary } from "@/hooks/useForm";
+
+export interface NewUser extends StringDictionary {
   name: string;
   lastName: string;
   username: string;
