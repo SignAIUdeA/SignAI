@@ -1,0 +1,63 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 320px;
+  color: var(--grey-light);
+}
+
+.FormTitle {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: var(--font-bold);
+  color: var(--green-dark);
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--grey-light);
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.WrapperButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.Btn {
+  padding: 0.25rem;
+  width: 50%;
+  font-weight: var(--font-bold);
+  font-size: 0.9rem;
+  border-radius: 0.9rem;
+  transition: all 200ms ease-in;
+}
+
+.BtnUpdate {
+  background: var(--bg-main);
+  color: var(--white);
+}
+
+.BtnUpdate:hover {
+  box-shadow: var(--shadow);
+}
+
+.BtnCancel {
+  border: 1px solid #5f5f5fab;
+  color: var(--grey-light);
+  background: transparent;
+}
+
+.BtnCancel:hover {
+  background-color: var(--grey-light);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
