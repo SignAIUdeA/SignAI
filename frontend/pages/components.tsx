@@ -1,6 +1,6 @@
 import FilterSection from "@/components/filter-section/FilterSection";
 import FormAddUser from "@/components/form-add-user/FormAddUser";
-import FormUpdateUser from "@/components/form-update-user/FormUpdateUser";
+import FormUpdateCredentialUser from "@/components/form-update-credential-user/FormUpdateCredentialUser";
 import InfoUser from "@/components/info-user/InfoUser";
 import Modal from "@/components/modal/Modal";
 import Table from "@/components/table/Table";
@@ -34,7 +34,7 @@ function Components() {
         <button onClick={() => setShowModal(!showModal)}>Abrir Modal</button>
         {!showModal || (
           <Modal setShowModal={setShowModal} closeButton={false}>
-            <FormUpdateUser setShowModal={setShowModal} />
+            <FormUpdateCredentialUser setShowModal={setShowModal} />
           </Modal>
         )}
       </main>

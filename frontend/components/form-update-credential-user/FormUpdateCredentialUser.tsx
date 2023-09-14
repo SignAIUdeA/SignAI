@@ -1,6 +1,6 @@
-import styles from "./form-update-user.module.css";
+import styles from "./form-update-credential-user.module.css";
 import useForm from "@/hooks/useForm";
-import { UpdateCredentialsUser } from "./form-update-user.types";
+import { UpdateCredentialsUser } from "./form-update-credential-user.types";
 
 interface Props {
   setShowModal: (showModal: boolean) => void;
@@ -12,7 +12,7 @@ const userUpdateCredentialsDataForm: UpdateCredentialsUser = {
   confirmPassword: "",
 };
 
-const FormUpdateUser = ({ setShowModal }: Props) => {
+const FormUpdateCredentialUser = ({ setShowModal }: Props) => {
   const { inputs, handleChange } = useForm<UpdateCredentialsUser>(
     userUpdateCredentialsDataForm
   );
@@ -64,4 +64,4 @@ const FormUpdateUser = ({ setShowModal }: Props) => {
   );
 };
 
-export default FormUpdateUser;
+export default FormUpdateCredentialUser;
