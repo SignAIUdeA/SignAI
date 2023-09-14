@@ -6,6 +6,7 @@ import { handleLogin } from "@/functions/login";
 import { AuthResponse, Credentials } from "@/types/types";
 import { useRouter } from "next/router";
 import Contact from "@/components/contact/Contact";
+import ErrorMessage from "@/components/error-message/ErrorMessage";
 
 const userData: Credentials = {
   user: "",
@@ -90,14 +91,10 @@ const Login = () => {
             disabled={errorMessage ? true : false}>
             Ingresar
           </button>
-          <p
-            className={
-              errorMessage
-                ? `${styles.ErrorMessage} ${styles.ErrorMessageVisible}`
-                : styles.ErrorMessage
-            }>
-            {errorMessage}
-          </p>
+          <ErrorMessage
+            className="mt-[-1rem] mb-[-1.5rem]"
+            errorMessage={errorMessage}
+          />
         </form>
       </section>
       <figure className={styles.LogoContainer}>
