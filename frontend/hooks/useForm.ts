@@ -1,16 +1,16 @@
 import { useState, ChangeEvent } from "react";
 
-export interface FormObject {
+export type StringDictionary = {
   [key: string]: string;
-}
+};
 
-interface FormHook {
+interface FormHook<T extends StringDictionary> {
   handleChange: (evt: ChangeEvent<HTMLInputElement>) => void;
-  inputs: FormObject;
+  inputs: T;
 }
 
-const useForm = (object: FormObject): FormHook => {
-  const [inputs, setInputs] = useState<FormObject>(object);
+const useForm = <T extends StringDictionary>(object: T): FormHook<T> => {
+  const [inputs, setInputs] = useState<T>(object);
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const { target } = evt;

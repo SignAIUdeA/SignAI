@@ -1,19 +1,20 @@
 import { useState, FormEvent } from "react";
-import useForm, { FormObject } from "@/hooks/useForm";
+import useForm from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
 import { validateCredentials } from "@/functions/validations";
 import { handleLogin } from "@/functions/login";
-import { AuthResponse } from "@/types/types";
+import { AuthResponse, Credentials } from "@/types/types";
 import { useRouter } from "next/router";
 import Contact from "@/components/contact/Contact";
+import ErrorMessage from "@/components/error-message/ErrorMessage";
 
-const userData: FormObject = {
+const userData: Credentials = {
   user: "",
   password: "",
 };
 
 const Login = () => {
-  const { inputs, handleChange } = useForm(userData);
+  const { inputs, handleChange } = useForm<Credentials>(userData);
   const router = useRouter();
 
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
@@ -23,14 +24,10 @@ const Login = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { user, password } = inputs;
-    const { isValidate, message } = validateCredentials({ user, password });
+    const { isValidate, message } = validateCredentials(inputs);
 
     if (isValidate) {
-      const { ok, authResponse, messageError } = await handleLogin({
-        user,
-        password,
-      });
+      const { ok, authResponse, messageError } = await handleLogin(inputs);
       if (ok) {
         const authInfo = authResponse as AuthResponse;
         sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
@@ -94,14 +91,10 @@ const Login = () => {
             disabled={errorMessage ? true : false}>
             Ingresar
           </button>
-          <p
-            className={
-              errorMessage
-                ? `${styles.ErrorMessage} ${styles.ErrorMessageVisible}`
-                : styles.ErrorMessage
-            }>
-            {errorMessage}
-          </p>
+          <ErrorMessage
+            className="mt-[-1rem] mb-[-1.5rem]"
+            errorMessage={errorMessage}
+          />
         </form>
       </section>
       <figure className={styles.LogoContainer}>
