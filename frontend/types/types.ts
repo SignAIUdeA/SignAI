@@ -1,4 +1,6 @@
-export interface Credentials {
+import { StringDictionary } from "@/hooks/useForm";
+
+export interface Credentials extends StringDictionary {
   user: string;
   password: string;
 }
