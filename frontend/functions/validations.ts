@@ -1,71 +1,59 @@
 import { Credentials } from "@/types/types";
-import { UserForm } from "@/components/form-add-user/form-add-user.types";
+import { NewUser } from "@/components/form-add-user/form-add-user.types";
 
 interface ResponseValidateCredentials {
   isValidate: boolean;
   message?: string;
 }
 
+const haveEmptyFields = (fieldValues: string[]): boolean => {
+  const emptyFields = fieldValues.filter((elem) => elem.length === 0);
+  return emptyFields.length === 0 ? false : true;
+};
+
 export const validateCredentials = ({
   user,
   password,
 }: Credentials): ResponseValidateCredentials => {
-  let message = "";
-  let isValidate = false;
+  let message = "Todos los campos son correctos";
+  let isValidate = true;
 
-  if (user.length !== 0 && password.length !== 0) {
-    isValidate = true;
-    return { isValidate };
-  } else if (user.length === 0) {
-    message = "El campo usuario es obligatorio";
-  } else if (password.length === 0) {
-    message = "El campo contraseña es obligatorio";
+  if (!haveEmptyFields([user, password])) {
+    if (user.length === 0) {
+      message = "El campo usuario es obligatorio";
+      isValidate = false;
+    } else if (password.length === 0) {
+      message = "El campo contraseña es obligatorio";
+      isValidate = false;
+    }
   }
 
-  return { isValidate: false, message };
+  return { isValidate, message };
 };
 
 export const validateFieldsAddForm = (
-  userFormData: UserForm
+  userFormData: NewUser
 ): ResponseValidateCredentials => {
-  let message = "";
+  let message = "Todos los campos son correctos";
   let isValidate = true;
 
-  const {
-    name,
-    lastName,
-    username,
-    document,
-    position,
-    email,
-    university,
-    location,
-  } = userFormData;
+  const { document, position, email } = userFormData;
 
-  const fieldEmpty = Object.values(userFormData).filter(
-    (elem) => elem.length === 0
-  );
-
-  if (fieldEmpty.length !== 0)
-    return {
-      isValidate: false,
-      message: "Error, todos los campos son obligatorios",
-    };
-  else if (!isEmailValid(email))
-    return { isValidate: false, message: "El campo email es incorrecto" };
-  else if (!isDocumentValid(document))
-    return {
-      isValidate: false,
-      message:
-        "El documento no puede contener números, espacios o caracteres especiales",
-    };
-  else if (!isPositonValid(position)) {
-    return {
-      isValidate: false,
-      message: "Cargo no válido para el sistema",
-    };
+  if (haveEmptyFields(Object.values(userFormData))) {
+    isValidate = false;
+    message = "Error, todos los campos son obligatorios";
+  } else if (!isEmailValid(email)) {
+    isValidate = false;
+    message = "El campo email es incorrecto";
+  } else if (!isDocumentValid(document)) {
+    isValidate = false;
+    message =
+      "El documento no puede contener números, espacios o caracteres especiales";
+  } else if (!isPositonValid(position)) {
+    isValidate = false;
+    message = "Cargo no válido para el sistema";
   }
-  return { isValidate };
+  return { isValidate, message };
 };
 
 export const isEmailValid = (email: string): boolean => {
@@ -79,11 +67,9 @@ export const isDocumentValid = (document: string): boolean => {
 };
 
 export const isPositonValid = (position: string): boolean => {
-  if (
+  return (
     position === "Auxiliar" ||
     position === "Profesional" ||
     position === "Administrador"
-  )
-    return true;
-  return false;
+  );
 };
