@@ -28,6 +28,11 @@
   --font-bold: 700;
 }
 
+*::selection {
+  background-color: var(--green-dark);
+  color: var(--white);
+}
+
 .general {
   @apply flex flex-col place-items-center;
 }
@@ -102,7 +107,7 @@ button {
   padding: 12px;
   font-size: medium;
   /* background-color: #787878; */
-  background: var(--bg-main);
+  /* background: var(--bg-main); */
 }
 
 .welcome {
@@ -169,11 +174,11 @@ button {
   flex: 70%;
 }
 
-.Link-sidebar{
+.Link-sidebar {
   @apply flex bg-white rounded-lg  px-2 py-3 justify-start items-center gap-1;
 }
 
-.background:hover{
+.background:hover {
   background: var(--bg-item-navbar);
   color: white;
 }

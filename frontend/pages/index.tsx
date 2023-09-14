@@ -1,23 +1,31 @@
-import Image from 'next/image';
-import escudoUdeA from '../public/escudoUdeA.png';
-import React from 'react'
-import Link from 'next/link';
-import Logo from "@/components/Logo";
+import Link from "next/link";
+import style from "@/styles/index.module.css";
+import Contact from "@/components/contact/Contact";
 
-const index = () => {
-  console.log(escudoUdeA)
+const Index = () => {
   return (
-    <div className="welcome flex justify-center gap-3 m-4">
-		  <Logo/>     
-      <h1>SignAI UdeA</h1>
-      <Link href="/login">
-        <button type='submit' className='primary-button'>Ingresar</button>
-      </Link>
-      <Link href="/signup">
-        <button type='reset' className='secondary-button'>Registrarse</button>
-      </Link>
-	  </div>
-  )
-}
+    <main className={style.Main}>
+      <section className={style.SectionCentral}>
+        <div>
+          <h1 className={style.Logo}>SignAI</h1>
+          <h3 className={style.Slogan}>uniendo mundos seña por seña</h3>
+        </div>
+        <Link className={style.Btn} href={"/newlogin"}>
+          Ingresar
+        </Link>
+      </section>
+      <footer className={style.Footer}>
+        <figure className={style.WrapperImage}>
+          <img
+            className={style.Image}
+            src="udea-logo-blanco.svg"
+            alt="Logo de la Universidad de Antioquia"
+          />
+        </figure>
+        <Contact />
+      </footer>
+    </main>
+  );
+};
 
-export default index
+export default Index;
