@@ -21,7 +21,7 @@ export const SidebarData: SidebarDataItemType[] = [
     {
         title: 'Análisis de Datos',
         icon: <MdLeaderboard className='h-8 w-8'/>,
-        link: '/dashboard'
+        link: '/profesionalChart'
     },
     {
         title: 'Configurar Perfil',

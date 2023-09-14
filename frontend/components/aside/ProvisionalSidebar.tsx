@@ -17,7 +17,7 @@ const ProvisionalSidebar = () => {
         </div>
 
         <ul className='flex flex-col gap-6'>
-          {SidebarData.map((item, index) => (
+          {SidebarData.map((item) => (
             <li key={item.title} onClick={() => router.push(item.link)}>
               <Link href={item.link} className='debug Link-sidebar background text-[var(--grey-light)]'> 
                 {item.icon}
