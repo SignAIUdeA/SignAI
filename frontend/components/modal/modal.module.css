@@ -1,0 +1,40 @@
+.ModalContainer {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(202, 252, 231, 0.66);
+  backdrop-filter: blur(10px);
+}
+
+.Modal {
+  position: relative;
+  background-color: var(--white);
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.BtnClose {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  background-color: rgba(248, 64, 64, 0.575);
+  right: 0.8rem;
+  top: 0.8rem;
+  transition: box-shadow 300ms ease-in;
+}
+
+.BtnClose:hover {
+  box-shadow: 4px 4px 23px 0px rgba(252, 36, 36, 0.589);
+}

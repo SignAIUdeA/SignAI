@@ -1,5 +1,6 @@
 import { Credentials } from "@/types/types";
 import { NewUser } from "@/components/form-add-user/form-add-user.types";
+import { UpdateCredentialsUser } from "@/components/form-update-credential-user/form-update-credential-user.types";
 
 interface ResponseValidateCredentials {
   isValidate: boolean;
@@ -72,4 +73,29 @@ export const isPositonValid = (position: string): boolean => {
     position === "Profesional" ||
     position === "Administrador"
   );
+};
+
+export const validateUpdateCredentials = (
+  updatedCredential: UpdateCredentialsUser
+): ResponseValidateCredentials => {
+  let message = "Todos los campos son correctos";
+  let isValidate = true;
+
+  const { password, confirmPassword } = updatedCredential;
+
+  if (haveEmptyFields(Object.values(updatedCredential))) {
+    message = "Todos los campos son obligatorios";
+    isValidate = false;
+  } else if (!passwordsMatch(password, confirmPassword)) {
+    message = "Error al confirmar la contraseña. No coinciden";
+    isValidate = false;
+  }
+  return { isValidate, message };
+};
+
+export const passwordsMatch = (
+  password: string,
+  confirmPassword: string
+): boolean => {
+  return password === confirmPassword;
 };
