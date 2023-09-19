@@ -31,3 +31,7 @@
   text-transform: uppercase;
   font-weight: var(--font-semibold);
 }
+
+.debug{
+  border: 1px solid red;
+}

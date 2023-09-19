@@ -21,13 +21,17 @@ const ProfesionalChart = () => {
     <>
         <Layout>
         {/* <div style={{width: 700}}> */}
-            <div className='debug flex flex-col h-full w-full'>
+            <div className='debug flex flex-col w-full items-center gap-8 m-20'>
+              <div className='flex flex-col debug'>
                 <span>ANÁLISIS DE DATOS</span>
                 <div className='flex gap-4'>
                     <span>375</span>
                     <span>Videos e Imagenes</span>
                 </div>
-                <ChartData charData={userLabelData}/>
+              </div>
+                <div style={{width:600, height:300}} className='debug'>
+                  <ChartData charData={userLabelData}/>
+                </div>
             </div>
         </Layout>
     </>

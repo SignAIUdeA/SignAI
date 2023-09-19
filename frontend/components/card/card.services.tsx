@@ -39,6 +39,24 @@ export const CardData: CardType[] = [
         image: '/sign.png',
     },
     {
+        name: 'Andrés Quintero',
+        date: '6/09/2023',
+        label: 'hola',
+        image: '/sign.png',
+    },
+    {
+        name: 'Andrés Quintero',
+        date: '6/09/2023',
+        label: 'hola',
+        image: '/sign.png',
+    },
+    {
+        name: 'Andrés Quintero',
+        date: '6/09/2023',
+        label: 'hola',
+        image: '/sign.png',
+    },
+    {
         name: 'Jose Waldo',
         date: '6/09/2023',
         label: 'hola',
