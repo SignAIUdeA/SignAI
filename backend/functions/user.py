@@ -6,19 +6,30 @@ from security.hashing import Hash
 
 
 def create(request: CreateUser):
+
+    validRoles = ["administrator", "assistant", "proffesionel"]
+
     if db.users.find_one({"email": request.email}):
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail=f"Email { request.email} already exist",
+        )
+    if not (request.role in validRoles):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"The role {request.role} isn't valid"
         )
     try:
         new_user = dict(
             name=request.name,
             email=request.email,
             password=Hash.bcrypt(request.password),
-            fecha_creacion=datetime.now().strftime("%Y%m%d%H%M%S"),
-            fecha_modificacion=datetime.now().strftime("%Y%m%d%H%M%S"),
-            role="user",
+            role=request.role,
+            location=request.location,
+            documentId=request.location,
+            university=request.university,
+            creation_date=datetime.now().strftime("%Y%m%d%H%M%S"),
+            modification_data=datetime.now().strftime("%Y%m%d%H%M%S"),
             signs=[],
         )
         result = db.users.insert_one(new_user)
