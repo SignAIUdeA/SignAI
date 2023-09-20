@@ -21,6 +21,7 @@ class UserBase(BaseModel):
 
 
 class CurrentUser(BaseModel):
+    id: str
     role: str
     email: str
 
@@ -29,6 +30,10 @@ class CreateUser(BaseModel):
     name: str
     email: str
     password: str
+    role: str
+    location = str
+    documentId = str
+    university = str
 
 
 class ShowUser(BaseModel):
