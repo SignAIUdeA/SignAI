@@ -11,9 +11,9 @@ class UserBase(BaseModel):
     creation_date: datetime
     modification_data: datetime
     role: str
-    location = str
-    documentId = str
-    university = str
+    location: str
+    documentId: str
+    university: str
     signs: List[Sign]
 
     class Config:
@@ -31,9 +31,9 @@ class CreateUser(BaseModel):
     email: str
     password: str
     role: str
-    location = str
-    documentId = str
-    university = str
+    location: str
+    documentId: str
+    university: str
 
 
 class ShowUser(BaseModel):
