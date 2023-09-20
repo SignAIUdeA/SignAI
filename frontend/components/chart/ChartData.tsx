@@ -7,6 +7,8 @@ ChartJS.register(LinearScale);
 const ChartData = ({ charData }) => {
     return (
       <Bar
+        width={600}
+        height={300}
         data={charData}
         options={{
           indexAxis: 'y',

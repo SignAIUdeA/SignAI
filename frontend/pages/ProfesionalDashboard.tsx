@@ -2,22 +2,16 @@ import React from 'react'
 import Layout from '@/layouts/Layout'
 import Card from '@/components/card/Card'
 import { CardData } from '@/components/card/card.services'
+import InfoUser from '@/components/info-user/InfoUser'
+import FilterSection from '@/components/filter-section/FilterSection'
 
 const ProfesionalDashboard = () => {
   return (
     <>
       <Layout>
         <div className='flex flex-col w-full h-full'>
-            <div className='flex justify-end debug pt-12 pr-16 gap-6'>
-                <button>salir</button>
-                <span>Perfil</span>
-            </div>
-            <div className='flex justify-between mt-11 debug'>
-                <div>Filtros</div>
-                <div>
-                    <button>izq</button>
-                    <button>der</button>
-                </div>
+            <div className='flex justify-center mt-11 debug'>
+              <FilterSection/>
             </div>
             <DesktopCards/>
             <MobileCards/>

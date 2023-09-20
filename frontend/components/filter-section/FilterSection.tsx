@@ -3,7 +3,7 @@ import style from "./filter-section.module.css";
 
 const FilterSection = () => {
   return (
-    <section className={style.FilterSection}>
+    <section className={`${style.FilterSection} debug`}>
       <section className={style.BarSearch}>
         <input
           className={style.BarSearchInput}
