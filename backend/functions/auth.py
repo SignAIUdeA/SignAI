@@ -18,7 +18,7 @@ def login(request: Login):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=f"Incorrect password"
         )
-    
+
     db.logs.insert_one(
         dict(
             type_event="login",
@@ -27,7 +27,7 @@ def login(request: Login):
             fecha_creacion=datetime.now().strftime("%Y%m%d%H%M%S"),
         )
     )
-    access_token =  create_access_token(
-        {"email": user["email"], "role": user["role"]}
+    access_token = create_access_token(
+        {"email": user["email"], "role": user["role"], "idUser": user["id"]}
     )
     return {"access_token": access_token, "token_type": "bearer"}
