@@ -39,6 +39,9 @@ class CreateUser(BaseModel):
 class ShowUser(BaseModel):
     name: str
     email: str
+    location: str
+    documentId: str
+    university: str
     signs: List[Sign] = []
 
 
