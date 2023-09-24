@@ -1,3 +1,4 @@
+import { ConfigProfile } from "@/components/config-profile/ConfigProfile";
 import FilterSection from "@/components/filter-section/FilterSection";
 import FormAddUser from "@/components/form-add-user/FormAddUser";
 import FormUpdateCredentialUser from "@/components/form-update-credential-user/FormUpdateCredentialUser";
@@ -37,6 +38,8 @@ function Components() {
             <FormUpdateCredentialUser setShowModal={setShowModal} />
           </Modal>
         )}
+        
+        <ConfigProfile/>
       </main>
     );
   }
