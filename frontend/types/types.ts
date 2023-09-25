@@ -12,6 +12,15 @@ export interface AuthResponse {
   access_token: string;
 }
 
+export interface UserInfo {
+  name: string;
+  email: string;
+  university: string;
+  documentId: string;
+  location: string;
+  signs: any;
+}
+
 export interface UserAuthorized {
   email: string;
   role: RoleType;
