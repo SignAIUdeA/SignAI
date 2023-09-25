@@ -5,6 +5,7 @@ import FormUpdateCredentialUser from "@/components/form-update-credential-user/F
 import InfoUser from "@/components/info-user/InfoUser";
 import Modal from "@/components/modal/Modal";
 import Table from "@/components/table/Table";
+import TagPosition from "@/components/tag-position/TagPosition";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -40,6 +41,7 @@ function Components() {
         )}
         
         <ConfigProfile/>
+        <TagPosition/>
       </main>
     );
   }
