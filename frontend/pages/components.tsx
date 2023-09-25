@@ -5,9 +5,8 @@ import InfoUser from "@/components/info-user/InfoUser";
 import Modal from "@/components/modal/Modal";
 import Table from "@/components/table/Table";
 import useLogin from "@/hooks/useLogin";
+import { RoleType } from "@/types/types";
 import { useState } from "react";
-
-type RoleType = "administrator" | "assistant" | "professional";
 
 const ROLES = {
   administrator: "Administrador",

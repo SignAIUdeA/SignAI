@@ -1,5 +1,7 @@
 import { StringDictionary } from "@/hooks/useForm";
 
+export type RoleType = "administrator" | "assistant" | "professional";
+
 export interface Credentials extends StringDictionary {
   user: string;
   password: string;
@@ -12,7 +14,7 @@ export interface AuthResponse {
 
 export interface UserAuthorized {
   email: string;
-  role: string;
+  role: RoleType;
   idUser: string;
   exp: number;
 }
