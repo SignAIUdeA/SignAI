@@ -16,7 +16,7 @@ const ROLES = {
 
 function Components() {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { isLogin, userAuth } = useLogin();
+  const { isLogin, userAuth, userInfo } = useLogin();
 
   if (isLogin) {
     const role = userAuth?.role as RoleType;
@@ -25,7 +25,7 @@ function Components() {
       <main className="p-10">
         <h1 className="mb-[2rem]">Vista de los componentes</h1>
         <Table />
-        <InfoUser name="Pepe Rojas" role={ROLES[role]} />
+        <InfoUser name={userInfo?.name as string} role={ROLES[role]} />
         <FilterSection />
         <FormAddUser />
         <button onClick={() => setShowModal(!showModal)}>Abrir Modal</button>
