@@ -109,13 +109,17 @@ const FormAddUser = () => {
           </label>
           <label htmlFor="position">
             Cargo
-            <input
+            <select
+              className={`${styles.Input} py-[0.2rem]`}
               onChange={handleChange}
-              className={styles.Input}
-              type="text"
               name="position"
-              id="position"
-            />
+              id="position">
+              <option value="administrator" selected>
+                Administrador
+              </option>
+              <option value="professional">Profesional</option>
+              <option value="assistant">Auxiliar</option>
+            </select>
           </label>
           <label htmlFor="university">
             Universidad
