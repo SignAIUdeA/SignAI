@@ -1,9 +1,10 @@
 import { IconAvatarUser } from "@/icons/Icons";
 import styles from "./form-add-user.module.css";
 import useForm from "@/hooks/useForm";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { validateFieldsAddForm } from "@/functions/validations";
 import { NewUser } from "./form-add-user.types";
+import ErrorMessage from "../error-message/ErrorMessage";
 
 const userDataForm: NewUser = {
   name: "",
@@ -19,6 +20,10 @@ const userDataForm: NewUser = {
 const FormAddUser = () => {
   const { inputs, handleChange } = useForm<NewUser>(userDataForm);
 
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined
+  );
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -26,9 +31,13 @@ const FormAddUser = () => {
 
     if (responseValidation.isValidate) {
       alert("¡El usuario fue creado con exito!");
-    } else {
-      alert(responseValidation.message);
     }
+    setErrorMessage(responseValidation.message);
+
+    setTimeout(() => {
+      setErrorMessage(undefined);
+    }, 5000);
+
     return;
   };
 
@@ -133,7 +142,10 @@ const FormAddUser = () => {
           </label>
         </div>
       </section>
-      <button className={styles.BtnForm}>Crear Usuario</button>
+      <button disabled={errorMessage ? true : false} className={styles.BtnForm}>
+        Crear Usuario
+      </button>
+      <ErrorMessage className="" errorMessage={errorMessage} />
     </form>
   );
 };
