@@ -26,6 +26,6 @@ export const SidebarData: SidebarDataItemType[] = [
     {
         title: 'Configurar Perfil',
         icon: <MdManageAccounts className='h-8 w-8'/>,
-        link: '/profile'
+        link: '/profesionalProfile'
     }
 ]
