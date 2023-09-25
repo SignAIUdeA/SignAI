@@ -1,13 +1,17 @@
 
 import { IconAvatarUser } from "@/icons/Icons";
 import styles from "./config-profile.module.css"
-import React from 'react'
+import React, { useState } from 'react'
 import { InfoIcons, ProfileData } from "./config-profile.types";
 import { MdLocationCity, MdLocationOn, MdDateRange, MdPermIdentity,
     MdMailOutline, MdContactEmergency, MdRemoveRedEye, MdPerson, MdOutlinePermContactCalendar,
     MdOutlineSubtitles} from "react-icons/md";
+import TagPosition from "../tag-position/TagPosition";
+import Modal from "../modal/Modal";
+import FormUpdateCredentialUser from "../form-update-credential-user/FormUpdateCredentialUser";
 
 const ConfigProfile = () => {
+    const [showModal, setShowModal] = useState<boolean>(false);
     const profileData: ProfileData = {
         name: "MANUEL TOBIAS",
         lastName: "GARCIA CUELLO",
@@ -33,12 +37,15 @@ const ConfigProfile = () => {
   return (
     <div className="flex flex-col items-center mb-4">
         <IconAvatarUser width="100px" height="100px" />
+        {/* <div className={styles.AvatarContainer}>
+            <IconAvatarUser width="100px" height="100px" />
+        </div> */}
         <section className={`${styles.SectionData} debug`}>
             <div>
                 <h3 className={`${styles.FormTitle} debug`}>{profileData.name}</h3>
                 <h3 className={`${styles.FormTitle} debug`}>{profileData.lastName}</h3>
             </div>
-            <ul className="debug flex flex-col gap-6">
+            <ul className="debug flex flex-col gap-4">
 
                 <li className="flex gap-4">
                     <MdLocationOn className="h-8 w-8"/>
@@ -74,10 +81,18 @@ const ConfigProfile = () => {
                 
                 
             </ul>
-            <button className={styles.BtnForm}>Actualizar Información</button>
+            <TagPosition/>
+            <button
+                className={styles.BtnForm}
+                onClick={() => setShowModal(!showModal)}
+            >Actualizar Información</button>
+            {!showModal || (
+            <Modal setShowModal={setShowModal} closeButton={false}>
+                <FormUpdateCredentialUser setShowModal={setShowModal} />
+            </Modal>
+        )}
         </section>
     </div>
   )
 };
-
 export {ConfigProfile};
