@@ -71,3 +71,13 @@ export const getUserInfo = async (
     return null;
   }
 };
+
+export const createNewUser = async (newUser: any) => {
+  try {
+    const response = await instance.post("/user", newUser);
+    const data = response.data;
+    return { ok: true, message: "¡El usuario se ha creado exitosamente!" };
+  } catch (error: any) {
+    return { ok: false, message: error.response.data.detail };
+  }
+};
