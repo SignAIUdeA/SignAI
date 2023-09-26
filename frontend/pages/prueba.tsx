@@ -1,13 +1,13 @@
-import InfoUser from '@/components/info-user/InfoUser'
-import Layout from '@/layouts/Layout'
-import React from 'react'
+import FormAddUser from "@/components/form-add-user/FormAddUser";
+import React from "react";
 
 const Prueba = () => {
   return (
-    <Layout>
-        <div>prueba</div>
-    </Layout>
-  )
-}
+    <>
+      <div>prueba</div>
+      <FormAddUser />
+    </>
+  );
+};
 
-export default Prueba
+export default Prueba;
