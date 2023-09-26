@@ -5,6 +5,8 @@ import { FormEvent, useState } from "react";
 import { validateFieldsAddForm } from "@/functions/validations";
 import { NewUser } from "./form-add-user.types";
 import ErrorMessage from "../error-message/ErrorMessage";
+import { createNewUser } from "@/functions/login";
+import Modal from "../modal/Modal";
 
 const userDataForm: NewUser = {
   name: "",
@@ -19,6 +21,8 @@ const userDataForm: NewUser = {
 
 const FormAddUser = () => {
   const { inputs, handleChange } = useForm<NewUser>(userDataForm);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [messageSuccesfully, setMessageSuccesfully] = useState<string>("");
 
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
@@ -30,9 +34,26 @@ const FormAddUser = () => {
     const responseValidation = validateFieldsAddForm(inputs);
 
     if (responseValidation.isValidate) {
-      alert("¡El usuario fue creado con exito!");
+      const newUser = {
+        name: inputs.name + " " + inputs.lastName,
+        email: inputs.email,
+        university: inputs.university,
+        documentId: inputs.document,
+        location: inputs.location,
+        role: inputs.position,
+      };
+
+      createNewUser(newUser).then((res) => {
+        if (res.ok) {
+          setMessageSuccesfully(res.message);
+          setShowModal(true);
+        } else {
+          setErrorMessage(res.message);
+        }
+      });
+    } else {
+      setErrorMessage(responseValidation.message);
     }
-    setErrorMessage(responseValidation.message);
 
     setTimeout(() => {
       setErrorMessage(undefined);
@@ -42,111 +63,119 @@ const FormAddUser = () => {
   };
 
   return (
-    <form
-      method="POST"
-      className={styles.Form}
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}>
-      <div className={styles.AvatarContainer}>
-        <IconAvatarUser width="100px" height="100px" />
-      </div>
-      <h3 className={styles.FormTitle}>Información Personal</h3>
-      <section className={styles.WrapperInputs}>
-        <div className={`${styles.Side}`}>
-          <label htmlFor="name">
-            Nombres
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="name"
-              id="name"
-            />
-          </label>
-          <label htmlFor="username">
-            Usuario
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="username"
-              id="username"
-            />
-          </label>
-          <label htmlFor="document">
-            N° Documento
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="document"
-              id="document"
-            />
-          </label>
-          <label htmlFor="location">
-            Localidad
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="location"
-              id="location"
-            />
-          </label>
+    <>
+      <form
+        method="POST"
+        className={styles.Form}
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}>
+        <div className={styles.AvatarContainer}>
+          <IconAvatarUser width="100px" height="100px" />
         </div>
-        <div className={`${styles.Side}`}>
-          <label htmlFor="lastName">
-            Apellidos
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="lastName"
-              id="lastName"
-            />
-          </label>
-          <label htmlFor="email">
-            Email
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="email"
-              name="email"
-              id="email"
-            />
-          </label>
-          <label htmlFor="position">
-            Cargo
-            <select
-              className={`${styles.Input} py-[0.2rem]`}
-              onChange={handleChange}
-              name="position"
-              id="position">
-              <option value="administrator" selected>
-                Administrador
-              </option>
-              <option value="professional">Profesional</option>
-              <option value="assistant">Auxiliar</option>
-            </select>
-          </label>
-          <label htmlFor="university">
-            Universidad
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="university"
-              id="university"
-            />
-          </label>
-        </div>
-      </section>
-      <button disabled={errorMessage ? true : false} className={styles.BtnForm}>
-        Crear Usuario
-      </button>
-      <ErrorMessage className="" errorMessage={errorMessage} />
-    </form>
+        <h3 className={styles.FormTitle}>Información Personal</h3>
+        <section className={styles.WrapperInputs}>
+          <div className={`${styles.Side}`}>
+            <label htmlFor="name">
+              Nombres
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="text"
+                name="name"
+                id="name"
+              />
+            </label>
+            <label htmlFor="username">
+              Usuario
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="text"
+                name="username"
+                id="username"
+              />
+            </label>
+            <label htmlFor="document">
+              N° Documento
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="number"
+                name="document"
+                id="document"
+              />
+            </label>
+            <label htmlFor="location">
+              Localidad
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="text"
+                name="location"
+                id="location"
+              />
+            </label>
+          </div>
+          <div className={`${styles.Side}`}>
+            <label htmlFor="lastName">
+              Apellidos
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="text"
+                name="lastName"
+                id="lastName"
+              />
+            </label>
+            <label htmlFor="email">
+              Email
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="email"
+                name="email"
+                id="email"
+              />
+            </label>
+            <label htmlFor="position">
+              Cargo
+              <select
+                className={`${styles.Input} py-[0.2rem]`}
+                onChange={handleChange}
+                name="position"
+                id="position">
+                <option>Selecciona un cargo</option>
+                <option value="administrator">Administrador</option>
+                <option value="professional">Profesional</option>
+                <option value="assistant">Auxiliar</option>
+              </select>
+            </label>
+            <label htmlFor="university">
+              Universidad
+              <input
+                onChange={handleChange}
+                className={styles.Input}
+                type="text"
+                name="university"
+                id="university"
+              />
+            </label>
+          </div>
+        </section>
+        <button
+          disabled={errorMessage ? true : false}
+          className={styles.BtnForm}>
+          Crear Usuario
+        </button>
+        <ErrorMessage className="" errorMessage={errorMessage} />
+      </form>
+      {!showModal || (
+        <Modal setShowModal={setShowModal} closeButton={true}>
+          <h2>{messageSuccesfully}</h2>
+        </Modal>
+      )}
+    </>
   );
 };
 
