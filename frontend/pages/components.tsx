@@ -1,3 +1,4 @@
+import { ConfigProfile } from "@/components/config-profile/ConfigProfile";
 import FilterSection from "@/components/filter-section/FilterSection";
 import FormAddUser from "@/components/form-add-user/FormAddUser";
 import FormUpdateCredentialUser from "@/components/form-update-credential-user/FormUpdateCredentialUser";
@@ -7,6 +8,9 @@ import Table from "@/components/table/Table";
 import useLogin from "@/hooks/useLogin";
 import { RoleType } from "@/types/types";
 import { useState } from "react";
+import TagPosition from "@/components/tag-position/TagPosition";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const ROLES = {
   administrator: "Administrador",
@@ -34,6 +38,9 @@ function Components() {
             <FormUpdateCredentialUser setShowModal={setShowModal} />
           </Modal>
         )}
+        
+        <ConfigProfile/>
+        <TagPosition/>
       </main>
     );
   }

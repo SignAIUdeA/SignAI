@@ -1,0 +1,34 @@
+
+
+.AvatarContainer {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 50px);
+}
+.FormTitle {
+    /* text-align: center; */
+    font-size: 1.7rem;
+    font-weight: var(--font-bold);
+    color: var(--green-dark);
+}
+.SectionData {
+    position: relative;
+    background: var(--bg-ligth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    gap: 24px;
+    /* padding-top: 24px; */
+    /* padding-bottom: 24px; */
+}
+.BtnForm {
+    width: 50%;
+    padding: 0.625rem;
+    color: var(--white);
+    background: var(--bg-main);
+    border-radius: 2rem;
+    font-weight: var(--font-bold);
+    cursor: pointer;
+    /* transition: box-shadow 300ms ease-in; */
+}
