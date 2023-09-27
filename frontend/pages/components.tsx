@@ -5,32 +5,31 @@ import FormUpdateCredentialUser from "@/components/form-update-credential-user/F
 import InfoUser from "@/components/info-user/InfoUser";
 import Modal from "@/components/modal/Modal";
 import Table from "@/components/table/Table";
+import useLogin from "@/hooks/useLogin";
+import { RoleType } from "@/types/types";
+import { useState } from "react";
 import TagPosition from "@/components/tag-position/TagPosition";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-function Components() {
-  const [isLogin, setIsLogin] = useState<boolean>(true);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const router = useRouter();
+const ROLES = {
+  administrator: "Administrador",
+  assistant: "Auxiliar",
+  professional: "Profesional",
+};
 
-  // useEffect(() => {
-  //   const auth = sessionStorage.getItem("authInfo");
-  //   if (auth) {
-  //     setIsLogin(true);
-  //     return;
-  //   } else {
-  //     router.push("/newlogin");
-  //     return;
-  //   }
-  // }, []);
+function Components() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const { isLogin, userAuth, userInfo } = useLogin();
 
   if (isLogin) {
+    const role = userAuth?.role as RoleType;
+
     return (
       <main className="p-10">
         <h1 className="mb-[2rem]">Vista de los componentes</h1>
         <Table />
-        <InfoUser name="Pedro Rodriguez" role="Administrador" />
+        <InfoUser name={userInfo?.name as string} role={ROLES[role]} />
         <FilterSection />
         <FormAddUser />
         <button onClick={() => setShowModal(!showModal)}>Abrir Modal</button>

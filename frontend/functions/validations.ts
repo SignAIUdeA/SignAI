@@ -69,9 +69,9 @@ export const isDocumentValid = (document: string): boolean => {
 
 export const isPositonValid = (position: string): boolean => {
   return (
-    position === "Auxiliar" ||
-    position === "Profesional" ||
-    position === "Administrador"
+    position === "assistant" ||
+    position === "professional" ||
+    position === "administrator"
   );
 };
 
