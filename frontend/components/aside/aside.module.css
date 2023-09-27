@@ -1,0 +1,15 @@
+.Button {
+  background: var(--bg-main);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: box-shadow 200ms ease-in;
+}
+
+.Button:hover {
+  box-shadow: var(--shadow);
+}
