@@ -9,10 +9,10 @@ import styles from './aside.module.css';
 const ProvisionalSidebar = () => {
   const router = useRouter()
   return (
-    <aside className='hidden w-64 md:flex flex-col gap-12 pt-12 pl-12 debug'>
+    <aside className='hidden w-64 md:flex flex-col gap-12 pt-12 pl-12'>
         
-        <div className='debug flex gap-4 items-center'>
-          <button className='bg-white debug'>
+        <div className=' flex gap-4 items-center'>
+          <button className='bg-white '>
             <MdArticle className='h-8 w-8 button-sidebar'/>
           </button>
           <span className='text-[var(--green-dark)] font-bold text-2xl'>SignAI</span>
@@ -23,7 +23,7 @@ const ProvisionalSidebar = () => {
             <li key={item.title} onClick={() => router.push(item.link)}>
               <Link
                 href={item.link}
-                className={router.pathname === item.link ? 'debug Link-sidebar background-active' : 'debug Link-sidebar background text-[var(--grey-light)]'}> 
+                className={router.pathname === item.link ? ' Link-sidebar background-active' : ' Link-sidebar background text-[var(--grey-light)]'}> 
                 {item.icon}
                 <span className='text-sm'>
                   {item.title}

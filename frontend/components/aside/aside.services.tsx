@@ -16,7 +16,7 @@ export const SidebarData: SidebarDataItemType[] = [
     {
         title: 'Subir Señas',
         icon: <MdFileUpload className='h-8 w-8'/>,
-        link: '/uploadfile'
+        link: '/profesionalUploadfile'
     },
     {
         title: 'Análisis de Datos',
