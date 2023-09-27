@@ -5,7 +5,7 @@ import { UserInfo } from "./info-user.types";
 
 const InfoUser = ({ name, role }: UserInfo) => {
   return (
-    <section className={`${style.SectionInfoUser} debug`}>
+    <section className={`${style.SectionInfoUser} `}>
       <Link className={style.BtnLogout} href={"/newlogin"}>
         <IconLogout width="1.6rem" height="1.6rem" />
         <span>SALIR</span>

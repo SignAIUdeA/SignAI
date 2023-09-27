@@ -20,7 +20,7 @@ const Layout = ({children}: LayoutProps) => {
               <InfoUser name='santi' role='auxiliar'/>
             </div>
             {/* <section className='flex h-full w-full debug'> */}
-            <section className='flex debug overflow-y-auto h-full'>
+            <section className='flex  overflow-y-auto h-full'>
                 {children}
             </section>
           </div>
