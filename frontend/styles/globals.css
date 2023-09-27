@@ -198,8 +198,16 @@ button {
 .Link-sidebar {
   @apply flex bg-white rounded-lg  px-2 py-3 justify-start items-center gap-1;
 }
+.button-sidebar {
+  background: var(--bg-main);
+  color: white;
+}
 
 .background:hover {
+  background: var(--bg-item-navbar);
+  color: white;
+}
+.background-active {
   background: var(--bg-item-navbar);
   color: white;
 }
