@@ -11,8 +11,6 @@ import {
 function Table() {
   const users = getAllUsers();
 
-  console.log(style);
-
   return (
     <table className={style.Table}>
       <thead className={style.TableHead}>

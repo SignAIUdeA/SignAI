@@ -10,7 +10,7 @@ const Index = () => {
           <h1 className={style.Logo}>SignAI</h1>
           <h3 className={style.Slogan}>uniendo mundos seña por seña</h3>
         </div>
-        <Link className={style.Btn} href={"/newlogin"}>
+        <Link className={style.Btn} href={"/login"}>
           Ingresar
         </Link>
       </section>

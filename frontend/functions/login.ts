@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Credentials, AuthResponse } from "@/types/types";
+import { Credentials, AuthResponse, UserInfo } from "@/types/types";
 
 interface ResponseLogin {
   ok: boolean;
@@ -49,5 +49,35 @@ export const handleLogin = async ({
       ok: false,
       messageError,
     };
+  }
+};
+
+export const getUserInfo = async (
+  authInfo: AuthResponse
+): Promise<UserInfo | null> => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `${authInfo.token_type} ${authInfo.access_token}`,
+      },
+    };
+
+    const response = await instance.get("/user", config);
+    const data = response.data as UserInfo;
+
+    return data;
+  } catch (error: any) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const createNewUser = async (newUser: any) => {
+  try {
+    const response = await instance.post("/user", newUser);
+    const data = response.data;
+    return { ok: true, message: "¡El usuario se ha creado exitosamente!" };
+  } catch (error: any) {
+    return { ok: false, message: error.response.data.detail };
   }
 };

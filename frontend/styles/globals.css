@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --scroll-bar-color: #026937;
   --green-dark: #026937;
   --green-mid: #35944b;
   --green-ligth: #43b649;
@@ -31,6 +32,26 @@
 *::selection {
   background-color: var(--green-dark);
   color: var(--white);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--scroll-bar-color) var(--white);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-bar-color);
+  border-radius: 10px;
+  border: 4px solid var(--white);
 }
 
 .general {
