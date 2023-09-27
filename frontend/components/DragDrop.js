@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState, useRef } from "react"
 
 
@@ -5,7 +6,6 @@ const DragDrop = () => {
     const [file, setFiles] = useState(null)
     const inputRef = useRef();
     
-
     const handleDragOver = (event) => {
         event.preventDefault();
         console.log("dragging over")
@@ -21,7 +21,10 @@ const DragDrop = () => {
     if(file) return (
         <div className="uploads">
             <ul>
-                {Array.from(file).map((file, idx) => <li key={idx}>{file.name}</li> )}
+                {Array.from(file).map((file, idx) => 
+                <li key={idx}>
+                    {file.name}
+                </li> )}
             </ul>
             <div className="actions">
                 <button onClick={() => setFiles(null)}>Cancelar</button>

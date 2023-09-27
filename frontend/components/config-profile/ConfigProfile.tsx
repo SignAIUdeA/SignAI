@@ -40,12 +40,12 @@ const ConfigProfile = () => {
         {/* <div className={styles.AvatarContainer}>
             <IconAvatarUser width="100px" height="100px" />
         </div> */}
-        <section className={`${styles.SectionData} debug`}>
+        <section className={`${styles.SectionData} `}>
             <div>
-                <h3 className={`${styles.FormTitle} debug`}>{profileData.name}</h3>
-                <h3 className={`${styles.FormTitle} debug`}>{profileData.lastName}</h3>
+                <h3 className={`${styles.FormTitle} `}>{profileData.name}</h3>
+                <h3 className={`${styles.FormTitle} `}>{profileData.lastName}</h3>
             </div>
-            <ul className="debug flex flex-col gap-4">
+            <ul className=" flex flex-col gap-4">
 
                 <li className="flex gap-4">
                     <MdLocationOn className="h-8 w-8"/>

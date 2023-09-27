@@ -2,7 +2,6 @@ import Link from "next/link";
 import style from "./info-user.module.css";
 import { IconLogout, IconAvatarUser } from "@/icons/Icons";
 import { UserInfo } from "./info-user.types";
-import { useUserStore } from "@/store/userStore";
 import useLogin from "@/hooks/useLogin";
 import { useRouter } from "next/router";
 
