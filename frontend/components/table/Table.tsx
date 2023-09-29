@@ -8,11 +8,15 @@ import {
   IconAvatarUser,
 } from "@/icons/Icons";
 
-function Table() {
+interface Props {
+  className?: string;
+}
+
+function Table({ className = "" }: Props) {
   const users = getAllUsers();
 
   return (
-    <table className={style.Table}>
+    <table className={`${style.Table} ${className}`}>
       <thead className={style.TableHead}>
         <tr>
           <th className={style.CellHead}>Nombre</th>

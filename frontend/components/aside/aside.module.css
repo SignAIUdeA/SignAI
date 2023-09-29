@@ -13,3 +13,7 @@
 .Button:hover {
   box-shadow: var(--shadow);
 }
+
+.Link {
+  @apply flex bg-white rounded-lg  px-[1rem] py-3 justify-start items-center gap-[1rem];
+}

@@ -32,6 +32,6 @@
   font-weight: var(--font-semibold);
 }
 
-.debug{
+.debug {
   border: 1px solid red;
 }

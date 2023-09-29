@@ -1,34 +1,70 @@
-
-
 .AvatarContainer {
-    position: absolute;
-    top: 0px;
-    left: calc(50% - 50px);
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 50px);
 }
 .FormTitle {
-    /* text-align: center; */
-    font-size: 1.7rem;
-    font-weight: var(--font-bold);
-    color: var(--green-dark);
+  font-size: 1.5rem;
+  font-weight: var(--font-semibold);
+  color: var(--green-dark);
 }
 .SectionData {
-    position: relative;
-    background: var(--bg-ligth);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 700px;
-    gap: 24px;
-    /* padding-top: 24px; */
-    /* padding-bottom: 24px; */
+  position: relative;
+  background: var(--bg-ligth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  gap: 24px;
 }
 .BtnForm {
-    width: 50%;
-    padding: 0.625rem;
-    color: var(--white);
-    background: var(--bg-main);
-    border-radius: 2rem;
-    font-weight: var(--font-bold);
-    cursor: pointer;
-    /* transition: box-shadow 300ms ease-in; */
+  width: 100%;
+  padding: 0.625rem;
+  color: var(--white);
+  background: var(--bg-main);
+  border-radius: 2rem;
+  font-weight: var(--font-bold);
+  cursor: pointer;
+}
+
+/* ------ WALDO ---------*/
+
+.WrapperAvatar {
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 40px);
+}
+
+.ProfileSection {
+  position: relative;
+  width: fit-content;
+  padding: 3rem 3rem 3rem 3rem;
+  margin-top: 7rem;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 1rem;
+  background: var(--bg-ligth);
+}
+
+.WrapperTitle {
+  text-align: center;
+}
+
+.DataContainer {
+  font-size: 0.9rem;
+  color: var(--grey-dark);
+}
+
+.Password {
+  border: none;
+  background-color: transparent;
+  font-weight: var(--font-semibold);
+  font-size: 1.1rem;
+}
+
+.ItemData {
+  @apply flex gap-4;
+  align-items: center;
 }
