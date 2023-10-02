@@ -5,10 +5,10 @@ import { UserInfo } from "./info-user.types";
 import useLogin from "@/hooks/useLogin";
 import { useRouter } from "next/router";
 
-const InfoUser = ({ name, role }: UserInfo) => {
+const InfoUser = ({ name, role, className = "" }: UserInfo) => {
   const router = useRouter();
   return (
-    <section className={`${style.SectionInfoUser} debug`}>
+    <section className={`${style.SectionInfoUser} ${className}`}>
       <Link
         className={style.BtnLogout}
         href={"/login"}
@@ -24,7 +24,7 @@ const InfoUser = ({ name, role }: UserInfo) => {
         <span className={style.RoleUser}>{role}</span>
       </div>
       <div className={style.WrapperAvatar}>
-        <IconAvatarUser />
+        <IconAvatarUser width="2.2rem" height="2.2rem" />
       </div>
     </section>
   );

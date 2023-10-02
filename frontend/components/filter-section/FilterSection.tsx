@@ -1,9 +1,13 @@
 import { IconArrow, IconFilter } from "@/icons/Icons";
 import style from "./filter-section.module.css";
 
-const FilterSection = () => {
+interface Props {
+  className?: string;
+}
+
+const FilterSection = ({ className = "" }: Props) => {
   return (
-    <section className={`${style.FilterSection} `}>
+    <section className={`${style.FilterSection} ${className}`}>
       <section className={style.BarSearch}>
         <input
           className={style.BarSearchInput}

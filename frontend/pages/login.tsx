@@ -3,10 +3,11 @@ import useForm from "@/hooks/useForm";
 import styles from "@/styles/login.module.css";
 import { validateCredentials } from "@/functions/validations";
 import { handleLogin } from "@/functions/login";
-import { AuthResponse, Credentials } from "@/types/types";
+import { AuthResponse, Credentials, UserAuthorized } from "@/types/types";
 import { useRouter } from "next/router";
 import Contact from "@/components/contact/Contact";
 import ErrorMessage from "@/components/error-message/ErrorMessage";
+import jwt_decode from "jwt-decode";
 
 const userData: Credentials = {
   user: "",
@@ -15,6 +16,7 @@ const userData: Credentials = {
 
 const Login = () => {
   const { inputs, handleChange } = useForm<Credentials>(userData);
+
   const router = useRouter();
 
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
@@ -31,7 +33,9 @@ const Login = () => {
       if (ok) {
         const authInfo = authResponse as AuthResponse;
         sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
-        router.push("/components");
+        const infoToken = jwt_decode(authInfo.access_token) as UserAuthorized;
+
+        router.push("/dashboard");
         return;
       }
       setErrorMessage(messageError);
