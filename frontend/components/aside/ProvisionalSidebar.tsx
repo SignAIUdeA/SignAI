@@ -9,7 +9,7 @@ import styles from './aside.module.css';
 const ProvisionalSidebar = () => {
   const router = useRouter()
   return (
-    <aside className='hidden w-64 md:flex flex-col gap-12 pt-12 pl-12'>
+    <aside className='hidden w-64 md:flex flex-col gap-12 pt-12 pl-12 debug'>
         
         <div className=' flex gap-4 items-center'>
           <button className='bg-white '>
