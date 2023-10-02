@@ -20,9 +20,11 @@ const Layoutp = ({ children, role }: Props) => {
 
   return (
     <main className={styles.Layout}>
-      <div className={styles.InfoUser}>
-        <InfoUser name="Jose Waldo" role="Administrador" />
-      </div>
+      <InfoUser
+        name="Jose Waldo"
+        role="Administrador"
+        className={styles.InfoUser}
+      />
       <Aside role={role} className={styles.Aside} />
       <section className={styles.ChildrenSection}>{children}</section>
     </main>
