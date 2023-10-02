@@ -22,9 +22,11 @@ const ChartData = ({ charData }) => {
                   size: 14, // Tamaño de fuente del título
                   weight: 'bold', // Peso de la fuente del título
                 },
+                color: '#026937',
               },
               ticks: {
                 padding: 10, // Ajuste de padding para las etiquetas en el eje X
+                color: 'dark'
               },
             },
             y: {
@@ -35,9 +37,12 @@ const ChartData = ({ charData }) => {
                   size: 14, // Tamaño de fuente del título
                   weight: 'bold', // Peso de la fuente del título
                 },
+                color: '#026937',
               },
               ticks: {
                 padding: 10, // Ajuste de padding para las etiquetas en el eje X
+                color: 'dark',
+                
               },
             },
           },
