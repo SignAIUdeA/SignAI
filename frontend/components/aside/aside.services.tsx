@@ -64,17 +64,17 @@ const SidebarAssistant: SidebarDataItemType[] = [
   {
     title: "Subir Señas",
     icon: <MdFileUpload className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalUploadfile",
+    link: "/dashboard/assistant",
   },
   {
     title: "Análisis de Datos",
     icon: <MdLeaderboard className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalChart",
+    link: "/dashboard/assistant/data-analysis",
   },
   {
     title: "Configurar Perfil",
     icon: <MdMarkAsUnread className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/ProfesionalDashboard",
+    link: "/dashboard/assistant/profile",
   },
 ];
 
