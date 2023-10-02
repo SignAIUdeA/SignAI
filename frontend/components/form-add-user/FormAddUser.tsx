@@ -7,6 +7,7 @@ import { NewUser } from "./form-add-user.types";
 import ErrorMessage from "../error-message/ErrorMessage";
 import { createNewUser } from "@/functions/login";
 import Modal from "../modal/Modal";
+import SuccesfulMessage from "../successful-message/SuccesfulMessage";
 
 const userDataForm: NewUser = {
   name: "",
@@ -172,7 +173,7 @@ const FormAddUser = () => {
       </form>
       {!showModal || (
         <Modal setShowModal={setShowModal} closeButton={true}>
-          <h2>{messageSuccesfully}</h2>
+          <SuccesfulMessage message={messageSuccesfully} />
         </Modal>
       )}
     </>

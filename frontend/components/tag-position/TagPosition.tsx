@@ -27,6 +27,7 @@ function TagPosition({ position = "AUX" }: Props) {
     padding: "2px 10px",
     fontSize: "0.725rem",
     weigth: "var(--font-mid)",
+    width: "fit-content",
   };
   return <span style={style}>{label}</span>;
 }

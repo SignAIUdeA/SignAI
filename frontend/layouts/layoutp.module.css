@@ -1,0 +1,39 @@
+.Layout {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.InfoUser {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  z-index: 2;
+  display: flex;
+  justify-content: right;
+}
+
+.Aside {
+  height: 100vh;
+  width: 20%;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.ChildrenSection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1;
+  margin-top: 3rem;
+  width: 70%;
+  padding-right: 3rem;
+  overflow-y: scroll;
+}
+
+.ChildrenSection::-webkit-scrollbar {
+  display: none;
+}

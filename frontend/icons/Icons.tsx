@@ -231,3 +231,76 @@ export const IconClose = ({
     </svg>
   );
 };
+
+export const IconCheckSuccesfully = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = "rgb(252, 68, 68)",
+}: IconProps) => {
+  return (
+    <svg
+      fill={fill}
+      version="1.1"
+      id="Capa_1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width={width}
+      height={height}
+      viewBox="0 0 342.51 342.51"
+      xmlSpace="preserve"
+      stroke={fill}
+      strokeWidth="0.0034250799999999996"
+      transform="matrix(1, 0, 0, 1, 0, 0)">
+      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <path d="M171.254,0C76.837,0,0.003,76.819,0.003,171.248c0,94.428,76.829,171.26,171.251,171.26 c94.438,0,171.251-76.826,171.251-171.26C342.505,76.819,265.697,0,171.254,0z M245.371,136.161l-89.69,89.69 c-2.693,2.69-6.242,4.048-9.758,4.048c-3.543,0-7.059-1.357-9.761-4.048l-39.007-39.007c-5.393-5.398-5.393-14.129,0-19.521 c5.392-5.392,14.123-5.392,19.516,0l29.252,29.262l79.944-79.948c5.381-5.386,14.111-5.386,19.504,0 C250.764,122.038,250.764,130.769,245.371,136.161z" />
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export const IconMenuHamburger = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = WHITE,
+}: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      fill={fill}
+      viewBox="0 0 24 24">
+      <path d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z" />
+    </svg>
+  );
+};
+
+export const IconLock = ({
+  width = DEFAULT_SIZE_ICONS,
+  height = DEFAULT_SIZE_ICONS,
+  fill = WHITE,
+}: IconProps) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.25 10.0546V8C5.25 4.27208 8.27208 1.25 12 1.25C15.7279 1.25 18.75 4.27208 18.75 8V10.0546C19.8648 10.1379 20.5907 10.348 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.40931 10.348 4.13525 10.1379 5.25 10.0546ZM6.75 8C6.75 5.10051 9.10051 2.75 12 2.75C14.8995 2.75 17.25 5.10051 17.25 8V10.0036C16.867 10 16.4515 10 16 10H8C7.54849 10 7.13301 10 6.75 10.0036V8Z"
+        fill={fill}
+      />
+    </svg>
+  );
+};

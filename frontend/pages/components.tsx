@@ -10,7 +10,7 @@ import { RoleType } from "@/types/types";
 import { useState } from "react";
 import TagPosition from "@/components/tag-position/TagPosition";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const ROLES = {
   administrator: "Administrador",
@@ -38,9 +38,8 @@ function Components() {
             <FormUpdateCredentialUser setShowModal={setShowModal} />
           </Modal>
         )}
-        
-        <ConfigProfile/>
-        <TagPosition/>
+        <ConfigProfile />
+        <TagPosition />
       </main>
     );
   }
