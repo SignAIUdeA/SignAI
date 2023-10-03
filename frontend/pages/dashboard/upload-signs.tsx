@@ -1,9 +1,10 @@
+import DragDrop from "@/components/DragDrop";
 import Layout from "@/layouts/Layout";
 
 const UploadSigns = () => {
   return (
     <Layout>
-      <h1>Subir señas</h1>
+      <DragDrop />
     </Layout>
   );
 };

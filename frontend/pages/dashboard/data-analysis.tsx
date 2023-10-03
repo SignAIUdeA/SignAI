@@ -1,4 +1,4 @@
-import Layoutp from "@/layouts/Layoutp";
+import Layoutp from "@/layouts/Layout";
 import { labelsData } from "@/components/chart/chart.services";
 import { useState } from "react";
 import ChartData from "@/components/chart/ChartData";
@@ -20,7 +20,7 @@ const DataAnalysis = () => {
   });
 
   return (
-    <Layoutp role="assistant">
+    <Layoutp>
       <div className="debug flex flex-col w-full items-center gap-8 m-20">
         <div className="flex flex-col debug">
           <span>ANÁLISIS DE DATOS</span>
