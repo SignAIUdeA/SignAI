@@ -8,28 +8,41 @@ class UserBase(BaseModel):
     name: str
     email: str
     password: str
-    fecha_creacion: datetime
-    fecha_modificacion: datetime
+    creation_date: datetime
+    modification_data: datetime
     role: str
+    location: str
+    documentId: str
+    university: str
     signs: List[Sign]
-    
+
     class Config:
         orm_mode = True
 
 
 class CurrentUser(BaseModel):
+    id: str
     role: str
-    email: str 
+    email: str
+
 
 class CreateUser(BaseModel):
     name: str
     email: str
-    password: str
-    
+    role: str
+    location: str
+    documentId: str
+    university: str
+
+
 class ShowUser(BaseModel):
     name: str
     email: str
+    location: str
+    documentId: str
+    university: str
     signs: List[Sign] = []
+
 
 class EditUser(BaseModel):
     name: str
