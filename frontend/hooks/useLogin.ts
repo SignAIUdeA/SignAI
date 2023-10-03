@@ -14,11 +14,10 @@ const useLogin = () => {
   const router = useRouter();
   const actions = useUserStore((state) => state.actions);
   const isLogin = useUserStore((state) => state.isLogin);
-  const { setIsLogin } = actions;
-  // const [isLogin, setIsLogin] = useState<boolean>(false);
-  // const [userAuth, setUserAuth] = useState<UserAuthorized>();
-  // const [userInfo, setUserInfo] = useState<UserInfo>();
-  // const [userRole, setUserRole] = useState<RoleType>();
+  const userAuth = useUserStore((state) => state.userAuth);
+  const userInfo = useUserStore((state) => state.userInfo);
+  const userRole = useUserStore((state) => state.userRole);
+  const { setIsLogin, setUserAuth, setUserInfo, setUserRole } = actions;
 
   useEffect(() => {
     const authInfo = sessionStorage.getItem("authInfo");
@@ -27,17 +26,16 @@ const useLogin = () => {
       const infoToken = jwt_decode(
         authInfoParse.access_token
       ) as UserAuthorized;
-      // setUserAuth(infoToken);
-      // setIsLogin(true);
-      // setUserRole(infoToken.role);
-      // getUserInfo(authInfoParse).then((res) => setUserInfo(res as UserInfo));
+      setUserAuth(infoToken);
+      setUserRole(infoToken.role);
+      getUserInfo(authInfoParse).then((res) => setUserInfo(res as UserInfo));
       setIsLogin(true);
     } else {
       router.push("/login");
     }
   }, []);
 
-  return { isLogin };
+  return { isLogin, userAuth, userInfo, userRole };
 };
 
 export default useLogin;
