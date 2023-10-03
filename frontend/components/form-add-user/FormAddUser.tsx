@@ -20,7 +20,11 @@ const userDataForm: NewUser = {
   university: "",
 };
 
-const FormAddUser = () => {
+interface Props {
+  className?: string;
+}
+
+const FormAddUser = ({ className = "" }: Props) => {
   const { inputs, handleChange } = useForm<NewUser>(userDataForm);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [messageSuccesfully, setMessageSuccesfully] = useState<string>("");
@@ -67,7 +71,7 @@ const FormAddUser = () => {
     <>
       <form
         method="POST"
-        className={styles.Form}
+        className={`${styles.Form} ${className}`}
         onSubmit={(e) => {
           handleSubmit(e);
         }}>
