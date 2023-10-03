@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Contact from "@/components/contact/Contact";
 import ErrorMessage from "@/components/error-message/ErrorMessage";
 import jwt_decode from "jwt-decode";
+import { ROUTES_DASHBOARD } from "@/constants/routes";
 
 const userData: Credentials = {
   user: "",
@@ -34,8 +35,8 @@ const Login = () => {
         const authInfo = authResponse as AuthResponse;
         sessionStorage.setItem("authInfo", JSON.stringify(authInfo));
         const infoToken = jwt_decode(authInfo.access_token) as UserAuthorized;
-
-        router.push("/dashboard");
+        const pathReturnUser = ROUTES_DASHBOARD[infoToken.role];
+        router.push(pathReturnUser);
         return;
       }
       setErrorMessage(messageError);
