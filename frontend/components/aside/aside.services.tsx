@@ -4,8 +4,8 @@ import {
   MdLeaderboard,
   MdManageAccounts,
   MdMarkAsUnread,
-  MdArticle,
   MdFileUpload,
+  MdPersonAdd,
 } from "react-icons/md";
 
 interface SidebarDataItemType {
@@ -14,85 +14,64 @@ interface SidebarDataItemType {
   link: string;
 }
 
-export const SidebarData: SidebarDataItemType[] = [
-  {
-    title: "Bandeja de Entrada",
-    icon: <MdMarkAsUnread className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/ProfesionalDashboard",
-  },
-  {
-    title: "Subir Señas",
-    icon: <MdFileUpload className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalUploadfile",
-  },
-  {
-    title: "Análisis de Datos",
-    icon: <MdLeaderboard className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalChart",
-  },
-  {
-    title: "Configurar Perfil",
-    icon: <MdManageAccounts className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalProfile",
-  },
-];
+const CLASS = "h-[1.4rem] w-[1.4rem]";
 
 const SidebarProfessional: SidebarDataItemType[] = [
   {
     title: "Bandeja de Entrada",
-    icon: <MdMarkAsUnread className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/ProfesionalDashboard",
+    icon: <MdMarkAsUnread className={CLASS} />,
+    link: "/dashboard/inbox",
   },
   {
     title: "Subir Señas",
-    icon: <MdFileUpload className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalUploadfile",
+    icon: <MdFileUpload className={CLASS} />,
+    link: "/dashboard/upload-signs",
   },
   {
     title: "Análisis de Datos",
-    icon: <MdLeaderboard className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalChart",
+    icon: <MdLeaderboard className={CLASS} />,
+    link: "/dashboard/data-analysis",
   },
   {
     title: "Configurar Perfil",
-    icon: <MdManageAccounts className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalProfile",
+    icon: <MdManageAccounts className={CLASS} />,
+    link: "/dashboard/profile",
   },
 ];
 
 const SidebarAssistant: SidebarDataItemType[] = [
   {
     title: "Subir Señas",
-    icon: <MdFileUpload className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalUploadfile",
+    icon: <MdFileUpload className={CLASS} />,
+    link: "/dashboard/upload-signs",
   },
   {
     title: "Análisis de Datos",
-    icon: <MdLeaderboard className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/profesionalChart",
+    icon: <MdLeaderboard className={CLASS} />,
+    link: "/dashboard/data-analysis",
   },
   {
     title: "Configurar Perfil",
-    icon: <MdMarkAsUnread className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/ProfesionalDashboard",
+    icon: <MdManageAccounts className={CLASS} />,
+    link: "/dashboard/profile",
   },
 ];
 
 const SidebarAdministrator: SidebarDataItemType[] = [
   {
     title: "Lista de Usuarios",
-    icon: <MdMarkAsUnread className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/dashboard/administrator",
+    icon: <MdMarkAsUnread className={CLASS} />,
+    link: "/dashboard/list-users",
   },
   {
     title: "Añadir Usuarios",
-    icon: <MdFileUpload className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/dashboard/administrator/addusers",
+    icon: <MdPersonAdd className={CLASS} />,
+    link: "/dashboard/add-users",
   },
   {
     title: "Configurar Perfil",
-    icon: <MdLeaderboard className="h-[1.4rem] w-[1.4rem]" />,
-    link: "/dashboard/administrator/profile",
+    icon: <MdManageAccounts className={CLASS} />,
+    link: "/dashboard/profile",
   },
 ];
 

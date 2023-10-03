@@ -1,29 +1,43 @@
-import Navbar from "@/components/Navbar";
-import { ProvisionalSidebar } from "@/components/aside/ProvisionalSidebar";
 import InfoUser from "@/components/info-user/InfoUser";
-import React from "react";
+import styles from "./layout.module.css";
+import Aside from "@/components/aside/Aside";
+import { RoleType } from "@/types/types";
+import useLogin from "@/hooks/useLogin";
+import { ROLES } from "@/constants/roles";
+import { useRouter } from "next/router";
+import { USER_VALID_ROUTES } from "@/constants/routes";
 
-interface LayoutProps {
+interface Props {
   children: JSX.Element;
 }
 
-const Layout = ({ children }: LayoutProps) => {
-  return (
-    // <div className=''>
-    <main className="flex h-screen flex-col md:flex-row overflow-hidden">
-      {/* <main className='flex h-screen w-screen flex-col md:flex-row'> */}
-      <ProvisionalSidebar />
-      <Navbar />
-      <div className="flex flex-col w-full">
-        <div className="flex justify-end pt-12 pr-16">
-          <InfoUser name="santi" role="auxiliar" />
-        </div>
-        {/* <section className='flex h-full w-full debug'> */}
-        <section className="flex  overflow-y-auto h-full">{children}</section>
-      </div>
-    </main>
+const Layout = ({ children }: Props) => {
+  const router = useRouter();
+  const { isLogin, userRole, userInfo } = useLogin();
+  const rolename = userRole as RoleType;
+  const roleUser = ROLES[rolename];
 
-    // </div>
+  if (!isLogin) {
+    return null;
+  } else {
+    const actualUserPath = router.pathname;
+    const listValidRoutesUser = USER_VALID_ROUTES[rolename];
+    const existRoute = listValidRoutesUser.includes(actualUserPath);
+    if (!existRoute) {
+      router.push("/403");
+    }
+  }
+
+  return (
+    <main className={styles.Layout}>
+      <InfoUser
+        name={userInfo?.name as string}
+        role={roleUser}
+        className={styles.InfoUser}
+      />
+      <Aside role={rolename} className={styles.Aside} />
+      <section className={styles.ChildrenSection}>{children}</section>
+    </main>
   );
 };
 

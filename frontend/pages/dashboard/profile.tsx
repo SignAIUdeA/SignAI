@@ -1,9 +1,9 @@
 import { ConfigProfile } from "@/components/config-profile/ConfigProfile";
-import Layoutp from "@/layouts/Layoutp";
+import Layoutp from "@/layouts/Layout";
 
 const Profile = () => {
   return (
-    <Layoutp role="administrator">
+    <Layoutp>
       <ConfigProfile />
     </Layoutp>
   );

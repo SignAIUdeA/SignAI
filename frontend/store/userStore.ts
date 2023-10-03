@@ -8,7 +8,9 @@ interface UserStore {
   userRole?: RoleType;
   actions: {
     setIsLogin: (login: boolean) => void;
-    // setUserAuth: () => void;
+    setUserAuth: (userAuth: UserAuthorized) => void;
+    setUserRole: (setRole: RoleType) => void;
+    setUserInfo: (userInfo: UserInfo) => void;
   };
 }
 
@@ -19,5 +21,8 @@ export const useUserStore = create<UserStore>((set) => ({
   userRole: undefined,
   actions: {
     setIsLogin: (login) => set({ isLogin: login }),
+    setUserAuth: (userAuth) => set({ userAuth }),
+    setUserRole: (setRole) => set({ userRole: setRole }),
+    setUserInfo: (userInfo) => set({ userInfo }),
   },
 }));
