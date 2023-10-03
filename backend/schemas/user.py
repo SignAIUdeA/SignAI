@@ -29,7 +29,6 @@ class CurrentUser(BaseModel):
 class CreateUser(BaseModel):
     name: str
     email: str
-    password: str
     role: str
     location: str
     documentId: str
