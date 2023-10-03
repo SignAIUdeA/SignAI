@@ -12,6 +12,9 @@ class User(Base):
     email = Column(String)
     password = Column(String)
     role = Column(String)
+    location = Column(String)
+    documentId = Column(String)
+    university = Column(String)
 
     signs = relationship("Sign", back_populates="creator")
     logs = relationship("Log", back_populates="creator")
