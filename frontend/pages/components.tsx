@@ -1,4 +1,3 @@
-import { ConfigProfile } from "@/components/config-profile/ConfigProfile";
 import FormUpdateCredentialUser from "@/components/form-update-credential-user/FormUpdateCredentialUser";
 import Modal from "@/components/modal/Modal";
 import { useState } from "react";
@@ -15,8 +14,14 @@ function Components() {
           <FormUpdateCredentialUser setShowModal={setShowModal} />
         </Modal>
       )}
-      <ConfigProfile />
+      {/* <ConfigProfile /> */}
       <TagPosition />
+      <video width={360} controls>
+        <source
+          src="http://127.0.0.1:8000/streaming/video/video.mp4"
+          type="video/mp4"
+        />
+      </video>
     </main>
   );
 }
