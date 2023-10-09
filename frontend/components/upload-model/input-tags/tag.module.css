@@ -1,0 +1,16 @@
+.Tag {
+  padding: 0.25rem 0.9rem;
+  border-radius: 1.3rem;
+  background: var(--bg-icon);
+  color: var(--white);
+  font-weight: var(--semibold);
+  font-size: 0.625rem;
+  width: fit-content;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.ContainerIcon {
+  cursor: pointer;
+}
