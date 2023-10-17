@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import auth, sign, user
+from routes import auth, sign, user, streaming
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -15,5 +15,6 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(sign.router)
 app.include_router(user.router)
+app.include_router(streaming.router)
 
 ##! [] crate token persistance change on login
