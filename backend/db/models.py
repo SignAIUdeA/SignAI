@@ -43,3 +43,24 @@ class Log(Base):
     user = Column(String)
 
     creator = relationship("User", back_populates="logs")
+
+
+class Model(Base):
+    __tablename__ = "models"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    description = Column(String)
+    category = Column(String)
+    key_words = Column(String)
+    precision = Column(String)
+    sensitivity = Column(String)
+    specificity = Column(String)
+    f1_score = Column(String)
+    roc_auc = Column(String)
+    version = Column(String)
+    notes_version = Column(String)
+    state_investigation = Column(String)
+    comments = Column(String)
+    creation_date = Column(Date)
+    created_by = Column(String)
