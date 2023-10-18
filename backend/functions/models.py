@@ -4,6 +4,37 @@ from pymongo.errors import PyMongoError
 from fastapi import HTTPException, status
 
 
+def build_model(model) -> ModelBase:
+    return ModelBase(
+        name=model["name"],
+        description=model["description"],
+        category=model["category"],
+        key_words=model["key_words"],
+        precision=model["precision"],
+        sensitivity=model["sensitivity"],
+        specificity=model["specificity"],
+        f1_score=model["f1_score"],
+        roc_auc=model["roc_auc"],
+        version=model["version"],
+        notes_version=model["notes_version"],
+        state_investigation=model["state_investigation"],
+        comments=model["comments"],
+        created_by=model["created_by"],
+        creation_date=model["creation_date"]
+    )
+
+
+def find_all():
+    try:
+        models = db.models.find({})
+        models_list = [build_model(model) for model in models]
+        return models_list
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
 def create(request: ModelBase):
     try:
         new_model = dict(
