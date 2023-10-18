@@ -1,0 +1,66 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  min-width: 320px;
+  color: var(--grey-light);
+  font-size: 0.8rem;
+}
+
+.FormSubtitle {
+  font-weight: var(--font-bold);
+  color: var(--green-dark);
+  font-size: 1rem;
+  text-align: left;
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--grey-light);
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.InputArea {
+  margin-top: 1rem;
+  border: 2px solid var(--grey-light);
+  border-radius: 0.5rem;
+  height: auto;
+  text-wrap: wrap;
+  background-color: transparent;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.FieldRequired {
+  position: relative;
+  width: fit-content;
+}
+
+.FieldRequired::after {
+  content: "*";
+  position: absolute;
+  color: red;
+  right: -0.7rem;
+}
+
+.WrapperAddBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.ButtonAdd {
+  border-radius: 50%;
+  border: 1px solid var(--grey-light);
+  background-color: var(--white);
+  transition: box-shadow 300ms ease-in;
+}
+
+.ButtonAdd:hover {
+  box-shadow: var(--shadow);
+}
