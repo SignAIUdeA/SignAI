@@ -1,6 +1,11 @@
 import { Credentials } from "@/types/types";
 import { NewUser } from "@/components/form-add-user/form-add-user.types";
 import { UpdateCredentialsUser } from "@/components/form-update-credential-user/form-update-credential-user.types";
+import {
+  ModelDescription,
+  ModelMetrics,
+  ModelStateVersion,
+} from "@/components/upload-model/form-model/FormModel";
 
 interface ResponseValidateCredentials {
   isValidate: boolean;
@@ -67,6 +72,11 @@ export const isDocumentValid = (document: string): boolean => {
   return numerosRegExp.test(document);
 };
 
+export const isVersionValid = (version: string): boolean => {
+  const versionRegex = /^v\d+\.\d+\.\d+$/;
+  return versionRegex.test(version);
+};
+
 export const isPositonValid = (position: string): boolean => {
   return (
     position === "assistant" ||
@@ -98,4 +108,84 @@ export const passwordsMatch = (
   confirmPassword: string
 ): boolean => {
   return password === confirmPassword;
+};
+
+export interface ResponseValidation {
+  isValidate: boolean;
+  message: string;
+}
+
+export interface ModelDescriptionAll {
+  name: string;
+  category: string;
+  description: string;
+  keyWords: string[];
+}
+
+export const validateFormDescriptionModel = (
+  formDescriptionData: ModelDescriptionAll
+): ResponseValidation => {
+  if (
+    haveEmptyFields([
+      formDescriptionData.name,
+      formDescriptionData.category,
+      formDescriptionData.name,
+    ])
+  ) {
+    return {
+      isValidate: false,
+      message: "Los campos con asterisco son obligatorios.",
+    };
+  }
+  return { isValidate: true, message: "Todos los campos son correctos" };
+};
+
+const isValidRangeValues = (values: number[]): boolean => {
+  const foundInvalidValues = values.filter((value) => value < 0 || value > 1);
+  return Boolean(foundInvalidValues.length === 0);
+};
+
+export const validateFormMetricsModel = (
+  formMetricsData: ModelMetrics
+): ResponseValidation => {
+  if (formMetricsData.precision.length === 0)
+    return {
+      isValidate: false,
+      message: "La precisión es un campo obligatorio",
+    };
+
+  const values = Object.values(formMetricsData).map((value) =>
+    parseFloat(value)
+  );
+
+  if (!isValidRangeValues(values))
+    return {
+      isValidate: false,
+      message: "Los valores se encuentran fuera del rango [0 - 1]",
+    };
+
+  return { isValidate: true, message: "Todos los campos son correctos" };
+};
+
+export const validateFormStateVersion = (
+  formStateVersion: ModelStateVersion
+): ResponseValidation => {
+  if (
+    haveEmptyFields([
+      formStateVersion.version,
+      formStateVersion.stateInvestigation,
+    ])
+  )
+    return {
+      isValidate: false,
+      message:
+        "La versión y el estado de investigación son campos obligatorios",
+    };
+
+  if (!isVersionValid(formStateVersion.version))
+    return {
+      isValidate: false,
+      message: "La versión tiene un formato incorrecto",
+    };
+  return { isValidate: true, message: "Todos los campos son correctos" };
 };

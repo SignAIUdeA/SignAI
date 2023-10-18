@@ -3,9 +3,12 @@ import { KeyboardEvent } from "react";
 import styles from "./input-tags.module.css";
 import Tag from "./Tag";
 
-const InputTags = () => {
-  const [tags, setTags] = useState<string[]>([]);
+interface Props {
+  setTags: (newTags: string[]) => void;
+  tags: string[];
+}
 
+const InputTags = ({ tags, setTags }: Props) => {
   const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && event.currentTarget.value.length !== 0) {
       setTags([...tags, event.currentTarget.value]);
@@ -27,6 +30,7 @@ const InputTags = () => {
         type="text"
         className={styles.Input}
         placeholder="Presiona enter añadir una palabra clave"
+        required
         onKeyUp={handleKeyUp}
       />
     </div>

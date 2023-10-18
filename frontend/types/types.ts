@@ -27,3 +27,21 @@ export interface UserAuthorized {
   idUser: string;
   exp: number;
 }
+
+export interface NewModelInteface {
+  name: string;
+  description: string;
+  category: string;
+  key_words: string[];
+  precision: string;
+  sensitivity: string;
+  specificity: string;
+  f1_score: string;
+  roc_auc: string;
+  version: string;
+  notes_version: string;
+  state_investigation: string;
+  comments: string;
+  created_by: string;
+  creation_date: string;
+}

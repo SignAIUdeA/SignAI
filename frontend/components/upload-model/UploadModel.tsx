@@ -30,42 +30,40 @@ const UploadModel = () => {
     }
   };
 
-  if (!file) {
-    return (
-      <div
-        className={styles.Wrapper}
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}>
-        <section className={styles.UploadSection}>
-          <p className={styles.Title}>Arrastra el modelo aquí</p>
-          <div className={styles.WrapperOption}>
-            <span className={styles.Line}></span>
-            <span className={styles.Or}>O</span>
-            <span className={styles.Line}></span>
-          </div>
-          <input
-            type="file"
-            multiple={false}
-            hidden
-            ref={inputFileRef}
-            onChange={handleFileChange}
-          />
-          <button
-            className={styles.Btn}
-            onClick={() => inputFileRef.current?.click()}>
-            Busca en tus archivos
-          </button>
-        </section>
-      </div>
-    );
-  }
-
   if (showModal)
     return (
       <Modal setShowModal={setShowModal} closeButton={false}>
-        <FormModel file={file} />
+        <FormModel file={file as File} setShowModal={setShowModal} />
       </Modal>
     );
+
+  return (
+    <div
+      className={styles.Wrapper}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}>
+      <section className={styles.UploadSection}>
+        <p className={styles.Title}>Arrastra el modelo aquí</p>
+        <div className={styles.WrapperOption}>
+          <span className={styles.Line}></span>
+          <span className={styles.Or}>O</span>
+          <span className={styles.Line}></span>
+        </div>
+        <input
+          type="file"
+          multiple={false}
+          hidden
+          ref={inputFileRef}
+          onChange={handleFileChange}
+        />
+        <button
+          className={styles.Btn}
+          onClick={() => inputFileRef.current?.click()}>
+          Busca en tus archivos
+        </button>
+      </section>
+    </div>
+  );
 };
 
 export default UploadModel;

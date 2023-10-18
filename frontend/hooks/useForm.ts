@@ -6,7 +6,7 @@ export type StringDictionary = {
 
 interface FormHook<T extends StringDictionary> {
   handleChange: (
-    evt: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    evt: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void;
   inputs: T;
 }
@@ -15,7 +15,7 @@ const useForm = <T extends StringDictionary>(object: T): FormHook<T> => {
   const [inputs, setInputs] = useState<T>(object);
 
   const handleChange = (
-    evt: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    evt: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { target } = evt;
     const { name, value } = target;
