@@ -4,6 +4,8 @@ import { useState } from "react";
 import TagPosition from "@/components/tag-position/TagPosition";
 import UploadModel from "@/components/upload-model/UploadModel";
 import axios from "axios";
+import CardModel from "@/components/card-model/CardModel";
+import { modelo } from "@/components/card-model/mock";
 
 function Components() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -41,6 +43,8 @@ function Components() {
         }}>
         Ver video
       </button>
+
+      <CardModel modelInfo={modelo} />
     </main>
   );
 }
