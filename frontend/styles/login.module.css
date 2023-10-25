@@ -34,10 +34,27 @@
   color: var(--green-dark);
 }
 
-.Slogan {
+/* .Slogan {
   font-size: 1rem;
   font-weight: var(--font-semibold);
   line-height: 2.5rem;
+  color: var(--green-mid);
+} */
+
+.Slogan {
+  color: var(--blue-light);
+  font-size: 1rem;
+  font-weight: var(--font-mid);
+  line-height: normal;
+  max-width: 40ch;
+  margin-bottom: 1rem;
+  color: var(--grey-light);
+}
+
+.SloganSubtitle {
+  font-weight: var(--font-semibold);
+  font-size: 1.2rem;
+  margin-top: 1rem;
   color: var(--green-mid);
 }
 
