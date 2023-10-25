@@ -54,9 +54,13 @@ const Login = () => {
       <section className={styles.LeftPanel}>
         <div className={styles.WrapperLogo}>
           <h1 className={styles.Logo}>SignAI</h1>
-          <span className={`${styles.Slogan}`}>
-            UNIENDO MUNDOS SEÑA POR SEÑA
-          </span>
+          <h2 className={`${styles.Slogan} ${styles.SloganSubtitle}`}>
+            UdeAccesible
+          </h2>
+          <h3 className={styles.Slogan}>
+            Un campus físico y virtual inclusivo para el pleno disfrute de la
+            vida universitaria
+          </h3>
         </div>
         <Contact className="text-[#393636] after:bg-[#393636]" />
       </section>
