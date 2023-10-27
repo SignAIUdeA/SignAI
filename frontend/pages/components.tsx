@@ -6,6 +6,7 @@ import UploadModel from "@/components/upload-model/UploadModel";
 import axios from "axios";
 import CardModel from "@/components/card-model/CardModel";
 import { modelo } from "@/components/card-model/mock";
+import SkeletonCardModel from "@/components/skeleton/skeleton-card-model/SkeletonCardModel";
 
 function Components() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -45,6 +46,8 @@ function Components() {
       </button>
 
       <CardModel modelInfo={modelo} />
+
+      {/* <SkeletonCardModel /> */}
     </main>
   );
 }

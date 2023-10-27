@@ -1,9 +1,11 @@
+import { Modelo } from "@/components/card-model/mock";
 import { NewModelInteface } from "@/types/types";
 import axios from "axios";
 
 interface RequestResponse {
   ok: boolean;
   message: string;
+  data?: any;
   //authResponse?: AuthResponse;
 }
 
@@ -20,6 +22,19 @@ export const createNewModel = async (
     const response = await instance.post("/model", newModel);
     const data = response.data;
     return { ok: true, message: "¡El modelo se ha creado exitosamente!" };
+  } catch (error: any) {
+    return { ok: false, message: error.response.data.detail };
+  }
+};
+
+export const getModels = async (
+  page: number,
+  size = 3
+): Promise<RequestResponse> => {
+  try {
+    const response = await instance.get(`/model?page=${page}&size=${size}`);
+    const data = response.data;
+    return { ok: true, message: "¡Modelos obtenidos exitosamente!", data };
   } catch (error: any) {
     return { ok: false, message: error.response.data.detail };
   }

@@ -14,11 +14,14 @@ export const USER_VALID_ROUTES = {
     "/dashboard/upload-signs",
     "/dashboard/data-analysis",
     "/dashboard/profile",
+    "/dashboard/list-models",
   ],
   professional: [
     "/dashboard/inbox",
     "/dashboard/upload-signs",
     "/dashboard/data-analysis",
     "/dashboard/profile",
+    "/dashboard/upload-models",
+    "/dashboard/list-models",
   ],
 };

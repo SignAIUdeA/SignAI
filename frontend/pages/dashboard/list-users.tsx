@@ -5,10 +5,10 @@ import Layout from "@/layouts/Layout";
 const ListUsers = () => {
   return (
     <Layout>
-      <>
+      <div className="flex flex-col w-[100%] h-[100%] p-[2rem]">
         <FilterSection />
         <Table />
-      </>
+      </div>
     </Layout>
   );
 };
