@@ -6,6 +6,8 @@ import {
   MdMarkAsUnread,
   MdFileUpload,
   MdPersonAdd,
+  MdOutlineUploadFile,
+  MdDescription,
 } from "react-icons/md";
 
 interface SidebarDataItemType {
@@ -33,6 +35,16 @@ const SidebarProfessional: SidebarDataItemType[] = [
     link: "/dashboard/data-analysis",
   },
   {
+    title: "Subir Modelos",
+    icon: <MdOutlineUploadFile className={CLASS} />,
+    link: "/dashboard/upload-models",
+  },
+  {
+    title: "Ver Modelos",
+    icon: <MdDescription className={CLASS} />,
+    link: "/dashboard/list-models",
+  },
+  {
     title: "Configurar Perfil",
     icon: <MdManageAccounts className={CLASS} />,
     link: "/dashboard/profile",
@@ -49,6 +61,11 @@ const SidebarAssistant: SidebarDataItemType[] = [
     title: "Análisis de Datos",
     icon: <MdLeaderboard className={CLASS} />,
     link: "/dashboard/data-analysis",
+  },
+  {
+    title: "Ver Modelos",
+    icon: <MdDescription className={CLASS} />,
+    link: "/dashboard/list-models",
   },
   {
     title: "Configurar Perfil",
