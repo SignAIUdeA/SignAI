@@ -1,3 +1,4 @@
+import { STATE_INVESTIGATION } from "@/constants/model-info";
 import style from "./card-model.module.css";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   notesVersion: string;
   stateInvestigation: string;
   comments: string;
+  createdBy: string;
 }
 
 const CardDetails = ({
@@ -22,6 +24,7 @@ const CardDetails = ({
   notesVersion,
   stateInvestigation,
   comments,
+  createdBy,
 }: Props) => {
   return (
     <>
@@ -71,7 +74,7 @@ const CardDetails = ({
       </section>
       <section>
         <h3 className={style.Subtitle}>Estado:</h3>
-        <strong>{stateInvestigation}</strong>
+        <strong>{STATE_INVESTIGATION[stateInvestigation]}</strong>
         <p>
           <strong>Comentarios:</strong>{" "}
           {comments.length > 0 ? comments : "no hay comentarios"}
@@ -79,7 +82,7 @@ const CardDetails = ({
       </section>
       <section>
         <h3 className={style.Subtitle}>Autor:</h3>
-        <strong>Andrés Quintero</strong>
+        <strong>{createdBy}</strong>
       </section>
     </>
   );
