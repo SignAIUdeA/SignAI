@@ -1,3 +1,4 @@
+import { CATEGORIAS_AI } from "@/constants/model-info";
 import style from "./card-model.module.css";
 
 interface Props {
@@ -13,6 +14,8 @@ const CardBasicDescription = ({
   category,
   keyWords,
 }: Props) => {
+  console.log("category", category, CATEGORIAS_AI[category]);
+
   return (
     <>
       <h2 className={style.Title}>{name}</h2>
@@ -22,7 +25,7 @@ const CardBasicDescription = ({
       </section>
       <section>
         <h3 className={style.Subtitle}>Categoria:</h3>
-        <p>{category}</p>
+        <p>{CATEGORIAS_AI[category]}</p>
       </section>
       <section>
         <ul className={style.ListKeywords}>
