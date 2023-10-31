@@ -9,9 +9,15 @@ interface Props {
 
 const ListCardModels = ({ models }: Props) => {
   if (!models)
-    return Array(3)
-      .fill(0)
-      .map((_, index) => <SkeletonCardModel key={index} />);
+    return (
+      <section className={`${styles.ContainerCards}`}>
+        {Array(3)
+          .fill(0)
+          .map((_, index) => (
+            <SkeletonCardModel key={index} />
+          ))}
+      </section>
+    );
 
   return (
     <section className={`${styles.ContainerCards}`}>
