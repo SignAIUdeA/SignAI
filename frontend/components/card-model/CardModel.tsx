@@ -57,6 +57,7 @@ const CardModel = ({ modelInfo }: Props) => {
                   notesVersion={modelInfo.notesVersion}
                   stateInvestigation={modelInfo.stateInvestigation}
                   comments={modelInfo.comments}
+                  createdBy={modelInfo.createdBy}
                 />
               </article>
             </div>
