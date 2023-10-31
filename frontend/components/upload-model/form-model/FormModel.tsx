@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import { NewModelInteface } from "@/types/types";
 import { createNewModel } from "@/functions/model";
 import { CATEGORIAS_AI, STATE_INVESTIGATION } from "@/constants/model-info";
+import { useUserStore } from "@/store/userStore";
 
 interface Props {
   file: File;
@@ -66,6 +67,9 @@ const modelStateVersion: ModelStateVersion = {
 };
 
 const FormModel = ({ file, setShowModal }: Props) => {
+  const userInfo = useUserStore((state) => state.userInfo);
+  const nameUser = userInfo?.name;
+
   const {
     inputs: inputsModelDescription,
     handleChange: handleChangeModelDescription,
@@ -147,7 +151,7 @@ const FormModel = ({ file, setShowModal }: Props) => {
         const newModelData: NewModelInteface = {
           name: dataFormDescription.name,
           description: dataFormDescription.description,
-          category: CATEGORIAS_AI[dataFormDescription.category],
+          category: dataFormDescription.category,
           key_words: dataFormDescription.keyWords,
           precision: inputsModelMetrics.precision,
           sensitivity: inputsModelMetrics.sensitivy,
@@ -156,10 +160,9 @@ const FormModel = ({ file, setShowModal }: Props) => {
           roc_auc: inputsModelMetrics.rocAuc,
           version: inputsModelStateVersion.version,
           notes_version: inputsModelStateVersion.notesVersion,
-          state_investigation:
-            STATE_INVESTIGATION[inputsModelStateVersion.stateInvestigation],
+          state_investigation: inputsModelStateVersion.stateInvestigation,
           comments: inputsModelStateVersion.comments,
-          created_by: "Usuario Demo",
+          created_by: nameUser || "",
           creation_date: "",
         };
         createNewModel(newModelData);

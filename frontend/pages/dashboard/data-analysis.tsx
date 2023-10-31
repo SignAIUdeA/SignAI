@@ -2,6 +2,7 @@ import Layoutp from "@/layouts/Layout";
 import { labelsData } from "@/components/chart/chart.services";
 import { useState } from "react";
 import ChartData from "@/components/chart/ChartData";
+import styles from "@/styles/data-analysis.module.css";
 
 const DataAnalysis = () => {
   const [userLabelData, setUserLabelData] = useState({
@@ -21,18 +22,18 @@ const DataAnalysis = () => {
 
   return (
     <Layoutp>
-      <div className="debug flex flex-col w-full items-center gap-8 m-20">
-        <div className="flex flex-col debug">
-          <span>ANÁLISIS DE DATOS</span>
-          <div className="flex gap-4">
-            <span>375</span>
-            <span>Videos e Imagenes</span>
+      <section className={styles.Wrapper}>
+        <header className={styles.Header}>
+          <h3 className={styles.Title}>Análisis de Datos</h3>
+          <div className={styles.Information}>
+            <span className={styles.Cantidad}>375</span>
+            <span className={styles.Message}>Videos e Imagenes</span>
           </div>
-        </div>
-        <div style={{ width: 600, height: 300 }} className="debug">
+        </header>
+        <div style={{ width: 600, height: 300 }}>
           <ChartData charData={userLabelData} />
         </div>
-      </div>
+      </section>
     </Layoutp>
   );
 };

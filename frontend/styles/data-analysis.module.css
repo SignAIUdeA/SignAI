@@ -1,0 +1,30 @@
+.Wrapper {
+  padding: 1.5rem 4rem;
+  background: var(--blue-light);
+  border-radius: 1rem;
+}
+
+.Title {
+  font-size: 2rem;
+  color: var(--green-dark);
+  font-weight: var(--font-bold);
+}
+
+.Information {
+  margin-top: 0.5rem;
+}
+
+.Cantidad {
+  font-size: 2.5rem;
+  color: var(--grey-dark);
+  font-weight: var(--font-bold);
+  margin-right: 0.5rem;
+}
+
+.Message {
+  display: inline-block;
+  max-width: 8ch;
+  color: var(--grey-light);
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+}

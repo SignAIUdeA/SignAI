@@ -5,7 +5,7 @@ interface Constants {
 export const STATE_INVESTIGATION: Constants = {
   inDevelopment: "En desarrollo",
   inTesting: "En pruebas",
-  inProduction: "En producción",
+  readyForProduction: "En producción",
 };
 
 export const CATEGORIAS_AI: Constants = {
