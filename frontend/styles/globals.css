@@ -188,11 +188,7 @@ button {
 .row #icon {
   flex: 30%;
   display: grid;
-  place-items: center;
-}
-
-.row #title {
-  flex: 70%;
+  font-family: "Jost", sans-serif;
 }
 
 .Link-sidebar {

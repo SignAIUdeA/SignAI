@@ -16,6 +16,8 @@ import Modal from "@/components/modal/Modal";
 import { useRouter } from "next/router";
 import { NewModelInteface } from "@/types/types";
 import { createNewModel } from "@/functions/model";
+import { CATEGORIAS_AI, STATE_INVESTIGATION } from "@/constants/model-info";
+import { useUserStore } from "@/store/userStore";
 
 interface Props {
   file: File;
@@ -65,6 +67,9 @@ const modelStateVersion: ModelStateVersion = {
 };
 
 const FormModel = ({ file, setShowModal }: Props) => {
+  const userInfo = useUserStore((state) => state.userInfo);
+  const nameUser = userInfo?.name;
+
   const {
     inputs: inputsModelDescription,
     handleChange: handleChangeModelDescription,
@@ -157,7 +162,7 @@ const FormModel = ({ file, setShowModal }: Props) => {
           notes_version: inputsModelStateVersion.notesVersion,
           state_investigation: inputsModelStateVersion.stateInvestigation,
           comments: inputsModelStateVersion.comments,
-          created_by: "Usuario Demo",
+          created_by: nameUser || "",
           creation_date: "",
         };
         createNewModel(newModelData);

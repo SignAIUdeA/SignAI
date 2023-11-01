@@ -17,17 +17,27 @@
 }
 
 .Logo {
+  position: relative;
   color: var(--white);
   font-size: 5rem;
   line-height: normal;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .Slogan {
   color: var(--blue-light);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: var(--font-semibold);
+  font-size: 1.2rem;
+  font-weight: var(--font-mid);
   line-height: normal;
+  max-width: 40ch;
+  margin-bottom: 1rem;
+}
+
+.SloganSubtitle {
+  font-weight: var(--font-semibold);
+  font-size: 1.4rem;
+  margin-top: 1rem;
 }
 
 .Btn {

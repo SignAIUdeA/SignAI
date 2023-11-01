@@ -1,0 +1,97 @@
+.Card {
+  border: 0.3px solid #5f5f5f4f;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  background: var(--bg-ligth);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--grey-dark);
+  max-width: 400px;
+  height: fit-content;
+}
+
+.Title {
+  color: var(--green-dark);
+  font-size: 1rem;
+  font-weight: var(--font-bold);
+}
+
+.Subtitle {
+  color: var(--green-mid);
+  font-size: 0.9rem;
+  font-weight: var(--font-semibold);
+}
+
+.ListKeywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.Keyword {
+  padding: 2px 0.7rem;
+  width: fit-content;
+  font-weight: var(--font-mid);
+  font-size: 0.7rem;
+  border-radius: 0.9rem;
+  background: var(--bg-icon);
+  color: var(--white);
+}
+
+.Btn {
+  padding: 0.25rem;
+  width: 100%;
+  font-weight: var(--font-bold);
+  font-size: 0.8rem;
+  border-radius: 0.9rem;
+  background: var(--bg-main);
+  color: var(--white);
+  transition: all 200ms ease-in;
+}
+
+.Btn:hover {
+  box-shadow: var(--shadow);
+}
+
+.BtnDetails {
+  background: var(--bg-main);
+}
+
+.BtnDownload {
+  margin-top: 0.5rem;
+  background: var(--bg-item-navbar);
+}
+
+/* ------------------------------------------- */
+
+.CardInfo {
+  font-size: 0.8rem;
+  color: var(--grey-dark);
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 1rem;
+}
+
+.ModelInformation {
+  display: flex;
+  gap: 1rem;
+}
+
+.Line {
+  width: 1px;
+  height: auto;
+  background-color: #39363677;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.BtnModal {
+  font-size: 0.9rem;
+}

@@ -1,16 +1,18 @@
 .ModalContainer {
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 1rem 0;
   width: 100vw;
   background-color: rgba(202, 252, 231, 0.66);
   backdrop-filter: blur(10px);
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .Modal {

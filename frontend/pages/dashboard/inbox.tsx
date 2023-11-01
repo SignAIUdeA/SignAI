@@ -40,10 +40,8 @@ const MobileCards = () => {
 const Inbox = () => {
   return (
     <Layout>
-      <div className="flex flex-col w-full h-full">
-        <div className="flex justify-center mt-11">
-          <FilterSection />
-        </div>
+      <div className="flex flex-col w-[100%] h-[100%] p-[2rem]">
+        <FilterSection />
         <DesktopCards />
         <MobileCards />
       </div>

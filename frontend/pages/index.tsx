@@ -8,7 +8,13 @@ const Index = () => {
       <section className={style.SectionCentral}>
         <div>
           <h1 className={style.Logo}>SignAI</h1>
-          <h3 className={style.Slogan}>uniendo mundos seña por seña</h3>
+          <h2 className={`${style.Slogan} ${style.SloganSubtitle}`}>
+            UdeAccesible
+          </h2>
+          <h3 className={style.Slogan}>
+            Un campus físico y virtual inclusivo para el pleno disfrute de la
+            vida universitaria
+          </h3>
         </div>
         <Link className={style.Btn} href={"/login"}>
           Ingresar

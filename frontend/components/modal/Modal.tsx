@@ -1,6 +1,6 @@
 import { IconClose } from "@/icons/Icons";
 import styles from "./modal.module.css";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;
