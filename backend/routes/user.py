@@ -11,9 +11,14 @@ def create_user(request: CreateUser):
     return user.create(request)
 
 
-@router.get("/", response_model=ShowUser, status_code=200 )
+@router.get("/", response_model=ShowUser, status_code=200)
 def get_user(current_user: CurrentUser = Depends(oauth2.get_current_user)):
     return user.show(current_user)
+
+
+@router.get("/all", response_model=List[UserAllInfomation], status_code=200)
+def get_user():
+    return user.show_all_users()
 
 
 @router.put("/", response_model=ShowUser, status_code=200)
