@@ -6,6 +6,20 @@ from security.hashing import Hash
 from functions.validations.validations import *
 
 
+def build_user(user) -> UserAllInfomation:
+    return UserAllInfomation(
+        id=str(user["_id"]),
+        name=user["name"],
+        email=user["email"],
+        creation_date=user["creation_date"],
+        modification_data=user["modification_data"],
+        role=user["role"],
+        location=user["location"],
+        documentId=user["documentId"],
+        university=user["university"],
+    )
+
+
 def create(request: CreateUser):
 
     if db.users.find_one({"email": request.email}):
@@ -68,6 +82,22 @@ def show(current_user: CurrentUser):
                 detail=f"User with the email {current_user['email']} is not available",
             )
         return ShowUser(**user)
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def show_all_users():
+    try:
+        users = db.users.find({})
+        list_users = [build_user(user) for user in users]
+        if not users:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Users are not available",
+            )
+        return list_users
     except PyMongoError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
