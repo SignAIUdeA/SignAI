@@ -4,6 +4,9 @@ import { UpdateCredentialsUser } from "./form-update-credential-user.types";
 import { FormEvent, useState } from "react";
 import { validateUpdateCredentials } from "@/functions/validations";
 import ErrorMessage from "../error-message/ErrorMessage";
+import { useUserStore } from "@/store/userStore";
+import { AuthResponse } from "@/types/types";
+import { updatePassword } from "@/functions/login";
 
 interface Props {
   setShowModal: (showModal: boolean) => void;
@@ -26,11 +29,18 @@ const FormUpdateCredentialUser = ({ setShowModal }: Props) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { message, isValidate } = validateUpdateCredentials(inputs);
+    const authInfo = sessionStorage.getItem("authInfo");
+    const authInfoParse = JSON.parse(authInfo as string) as AuthResponse;
+
     if (isValidate) {
-      alert("Se ha actualizado el usuario");
-      setShowModal(false);
+      updatePassword(inputs.password, authInfoParse).then((res) => {
+        if (res.ok) {
+          alert(res.message);
+          setShowModal(false);
+        }
+        setErrorMessage(res.message);
+      });
     }
-    setErrorMessage(message);
 
     setTimeout(() => {
       setErrorMessage(undefined);
