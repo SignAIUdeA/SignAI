@@ -1,0 +1,15 @@
+.InfoUser {
+  @apply min-w-[320px] p-6 flex flex-col gap-3;
+  color: var(--grey-light);
+}
+
+.Title {
+  color: var(--green-dark);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.Subtitle {
+  color: var(--grey-dark);
+}
