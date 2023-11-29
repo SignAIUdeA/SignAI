@@ -1,0 +1,88 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  min-width: 320px;
+  color: var(--grey-light);
+  font-size: 0.9rem;
+}
+
+.FormSubtitle {
+  font-weight: var(--font-bold);
+  color: var(--green-dark);
+  font-size: 1.3rem;
+  text-align: left;
+  text-align: center;
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--grey-light);
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.InputArea {
+  margin-top: 1rem;
+  border: 2px solid var(--grey-light);
+  border-radius: 0.5rem;
+  height: auto;
+  text-wrap: wrap;
+  background-color: transparent;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.FieldRequired {
+  position: relative;
+  width: fit-content;
+}
+
+.FieldRequired::after {
+  content: "*";
+  position: absolute;
+  color: red;
+  right: -0.7rem;
+}
+
+.WrapperButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.Btn {
+  padding: 0.25rem;
+  width: 50%;
+  font-weight: var(--font-bold);
+  font-size: 0.9rem;
+  border-radius: 0.9rem;
+  transition: all 200ms ease-in;
+}
+
+.BtnUpdate {
+  background: var(--bg-main);
+  color: var(--white);
+}
+
+.BtnUpdate:hover {
+  box-shadow: var(--shadow);
+}
+
+.BtnCancel {
+  border: 1px solid #5f5f5fab;
+  color: var(--grey-light);
+  background: transparent;
+}
+
+.BtnCancel:hover {
+  background-color: var(--grey-light);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
