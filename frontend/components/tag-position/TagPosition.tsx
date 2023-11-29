@@ -1,23 +1,25 @@
+import { RoleType } from "@/types/types";
+
 interface Props {
-  position?: "PRO" | "ADMIN" | "AUX";
+  position?: RoleType;
 }
 
 const POSITIONS = {
-  PRO: {
+  professional: {
     label: "Profesional LSC",
     color: "var(--blue-dark)",
   },
-  ADMIN: {
+  administrator: {
     label: "Administrador",
     color: "var(--green-dark)",
   },
-  AUX: {
+  assistant: {
     label: "Auxiliar LSC",
     color: "var(--blue-mid)",
   },
 };
 
-function TagPosition({ position = "AUX" }: Props) {
+function TagPosition({ position = "assistant" }: Props) {
   const { label, color } = POSITIONS[position];
   const style = {
     color: color,
