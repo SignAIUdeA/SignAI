@@ -45,3 +45,15 @@ export interface NewModelInteface {
   created_by: string;
   creation_date: string;
 }
+
+export interface UserTableInfo {
+  id: string;
+  name: string;
+  email: string;
+  creation_date: string;
+  modification_data: string;
+  role: string;
+  location: string;
+  documentId: string;
+  university: string;
+}
