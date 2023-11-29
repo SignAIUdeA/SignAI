@@ -27,15 +27,8 @@
 }
 
 .WrapperInputs {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
-.Side {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
