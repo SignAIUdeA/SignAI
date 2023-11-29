@@ -1,49 +1,19 @@
-import { CardData } from "@/components/card/card.services";
+import { CardData, CardSignType } from "@/components/card/card.services";
 import FilterSection from "@/components/filter-section/FilterSection";
+import ListSigns from "@/components/list-signs/ListSigns";
 import Layout from "@/layouts/Layout";
-import Card from "@/components/card/Card";
-
-const DesktopCards = () => {
-  return (
-    <div className="hidden md:grid h-full mt-6 justify-items-center overflow-y-auto">
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {CardData.map((item, index) => (
-          <Card
-            key={index}
-            name={item.name}
-            date={item.date}
-            label={item.label}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const MobileCards = () => {
-  return (
-    <div className="md:hidden sm:grid h-full mt-6 justify-items-center ">
-      <div className="grid sm:grid-cols-2">
-        {CardData.map((item, index) => (
-          <Card
-            key={index}
-            name={item.name}
-            date={item.date}
-            label={item.label}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
+import { useState } from "react";
 
 const Inbox = () => {
+  const [page, setPage] = useState<number>(1);
+  const [maxPage, setMaxPage] = useState<number>(1);
+  const [listSigns, setListSigns] = useState<CardSignType[]>(CardData);
+
   return (
     <Layout>
-      <div className="flex flex-col w-[100%] h-[100%] p-[2rem]">
-        <FilterSection />
-        <DesktopCards />
-        <MobileCards />
+      <div className="flex flex-col w-[100%] h-[100%] px-[2rem] py-[1.5rem]">
+        <FilterSection page={page} setPage={setPage} maxPages={maxPage} />
+        <ListSigns listSigns={listSigns} />
       </div>
     </Layout>
   );
