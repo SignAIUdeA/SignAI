@@ -1,10 +1,10 @@
-import DragDrop from "@/components/DragDrop";
+import UploadSign from "@/components/upload-signs/UploadSign";
 import Layout from "@/layouts/Layout";
 
 const UploadSigns = () => {
   return (
     <Layout>
-      <DragDrop />
+      <UploadSign />
     </Layout>
   );
 };
