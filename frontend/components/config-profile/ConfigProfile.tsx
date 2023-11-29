@@ -22,7 +22,7 @@ const ConfigProfile = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const profileData: ProfileData = {
     name: userInfo?.name || "MANUEL TOBIAS",
-    lastName: "GARCIA CUELLO",
+    lastName: "",
     location: userInfo?.location || "Río Negro, Antioquia",
     university: userInfo?.university || "Universidad de Antioquia",
     date: "Ago 22 - 2023",
