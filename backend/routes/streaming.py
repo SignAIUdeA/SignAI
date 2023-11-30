@@ -5,7 +5,7 @@ router = APIRouter(prefix="/streaming", tags=["Streaming"])
 
 PORTION_SIZE = 1024 * 1024
 
-current_directory = getcwd() + "/"
+current_directory = getcwd() + "/storage/videos/"
 
 
 @router.get("/video/{name}")
