@@ -10,6 +10,18 @@ import shutil
 import mimetypes
 
 
+def build_sign(sign) -> ShowSign:
+    return ShowSign(
+        id=str(sign["_id"]),
+        label=sign["label"],
+        creation_date=datetime.strptime(
+            sign["creation_date"], "%Y%m%d%H%M%S").strftime("%Y-%m-%d %H:%M:%S"),
+        role_user=sign["role_user"],
+        upload_by=sign["upload_by"],
+        path_file=sign["path_file"],
+    )
+
+
 def show(id: str):
     sign = db.signs.find_one({"_id": ObjectId(id)})
     if not sign:
@@ -22,9 +34,20 @@ def show(id: str):
         return sign
 
 
-def get_all(email: str):
-    signs = list(db.signs.find({"email": email}))
-    return signs
+def get_all():
+    try:
+        signs = db.signs.find({})
+        list_signs = [build_sign(sign) for sign in signs]
+        if not list_signs:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"No hay señas disponibles",
+            )
+        return list_signs
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
 
 
 # def create(request: SignBase, current_user: CurrentUser):
