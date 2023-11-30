@@ -52,6 +52,10 @@ class EditUser(BaseModel):
     signs: List[Sign] = []
 
 
+class EditCredentials(BaseModel):
+    new_password: str
+
+
 class UserAllInfomation(BaseModel):
     id: str
     name: str
