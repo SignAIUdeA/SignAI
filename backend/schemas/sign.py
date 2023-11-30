@@ -19,9 +19,12 @@ class CreateSign(BaseModel):
 
 
 class ShowSign(BaseModel):
+    id: str
+    path_file: str
     label: str
-    fecha_creacion: datetime
-    fecha_modificacion: datetime
+    creation_date: datetime
+    role_user: str
+    upload_by: str
 
 
 class EditSign(BaseModel):
