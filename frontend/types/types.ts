@@ -57,3 +57,12 @@ export interface UserTableInfo {
   documentId: string;
   university: string;
 }
+
+type LabelsInfo = {
+  [key: string]: number;
+};
+
+export type DataAnalysisInfo = {
+  number_signs: number;
+  labels_info: LabelsInfo;
+};
