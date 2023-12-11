@@ -1,0 +1,35 @@
+.Container {
+  @apply p-5 flex flex-col gap-6 text-[#393636];
+  min-width: 320px;
+}
+
+.WrapperBtns {
+  @apply flex justify-between gap-4;
+}
+
+.Btn {
+  @apply rounded-3xl w-[100%] p-2;
+}
+
+.BtnCancel {
+  color: var(--grey-light);
+  background-color: transparent;
+  border: 1px solid var(--grey-light);
+  transition: all 0.3s ease-in-out;
+}
+
+.BtnCancel:hover {
+  background-color: var(--grey-light);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.BtnConfirm {
+  color: var(--white);
+  background-color: var(--error);
+  transition: all 0.3s ease-in-out;
+}
+
+.BtnConfirm:hover {
+  box-shadow: var(--shadow);
+}

@@ -80,93 +80,90 @@ const FormAddUser = ({ className = "" }: Props) => {
         </div>
         <h3 className={styles.FormTitle}>Información Personal</h3>
         <section className={styles.WrapperInputs}>
-          <div className={`${styles.Side}`}>
-            <label htmlFor="name">
-              Nombres
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="text"
-                name="name"
-                id="name"
-              />
-            </label>
-            <label htmlFor="username">
-              Usuario
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="text"
-                name="username"
-                id="username"
-              />
-            </label>
-            <label htmlFor="document">
-              N° Documento
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="number"
-                name="document"
-                id="document"
-              />
-            </label>
-            <label htmlFor="location">
-              Localidad
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="text"
-                name="location"
-                id="location"
-              />
-            </label>
-          </div>
-          <div className={`${styles.Side}`}>
-            <label htmlFor="lastName">
-              Apellidos
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="text"
-                name="lastName"
-                id="lastName"
-              />
-            </label>
-            <label htmlFor="email">
-              Email
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="email"
-                name="email"
-                id="email"
-              />
-            </label>
-            <label htmlFor="position">
-              Cargo
-              <select
-                className={`${styles.Input} py-[0.2rem]`}
-                onChange={handleChange}
-                name="position"
-                id="position">
-                <option>Selecciona un cargo</option>
-                <option value="administrator">Administrador</option>
-                <option value="professional">Profesional</option>
-                <option value="assistant">Auxiliar</option>
-              </select>
-            </label>
-            <label htmlFor="university">
-              Universidad
-              <input
-                onChange={handleChange}
-                className={styles.Input}
-                type="text"
-                name="university"
-                id="university"
-              />
-            </label>
-          </div>
+          <label htmlFor="name">
+            Nombres
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="name"
+              id="name"
+            />
+          </label>
+          <label htmlFor="username">
+            Usuario
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="username"
+              id="username"
+            />
+          </label>
+          <label htmlFor="document">
+            N° Documento
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="number"
+              name="document"
+              id="document"
+            />
+          </label>
+          <label htmlFor="location">
+            Localidad
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="location"
+              id="location"
+            />
+          </label>
+
+          <label htmlFor="lastName">
+            Apellidos
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="lastName"
+              id="lastName"
+            />
+          </label>
+          <label htmlFor="email">
+            Email
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="email"
+              name="email"
+              id="email"
+            />
+          </label>
+          <label htmlFor="position">
+            Cargo
+            <select
+              className={`${styles.Input} py-[0.2rem]`}
+              onChange={handleChange}
+              name="position"
+              id="position">
+              <option>Selecciona un cargo</option>
+              <option value="administrator">Administrador</option>
+              <option value="professional">Profesional</option>
+              <option value="assistant">Auxiliar</option>
+            </select>
+          </label>
+          <label htmlFor="university">
+            Universidad
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="university"
+              id="university"
+            />
+          </label>
         </section>
         <button
           disabled={errorMessage ? true : false}

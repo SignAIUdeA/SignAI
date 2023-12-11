@@ -1,0 +1,60 @@
+.Card {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  min-width: 250px;
+  height: max-content;
+}
+
+.Header {
+  position: relative;
+}
+
+.Image {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+  filter: blur(1px);
+}
+
+.InfoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  color: var(--grey-dark);
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  background: var(--bg-ligth);
+  height: fit-content;
+}
+
+.IconWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.IconPlay {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.Field {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.Icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.Btn {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--bg-main);
+  font-weight: bold;
+  color: white;
+}

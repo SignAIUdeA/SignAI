@@ -1,0 +1,8 @@
+.Wrapper {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  height: 100vh;
+  overflow-y: scroll;
+}

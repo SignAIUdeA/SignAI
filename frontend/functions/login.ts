@@ -81,3 +81,30 @@ export const createNewUser = async (newUser: any) => {
     return { ok: false, message: error.response.data.detail };
   }
 };
+
+export const updatePassword = async (
+  newPassword: string,
+  authInfo: AuthResponse
+) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `${authInfo.token_type} ${authInfo.access_token}`,
+      },
+    };
+
+    const response = await instance.put(
+      "/user/update-credentials",
+      { new_password: newPassword },
+      config
+    );
+
+    const data = response.data;
+    return {
+      ok: true,
+      message: "¡Las credenciales se han modificado exitosamente!",
+    };
+  } catch (error: any) {
+    return { ok: false, message: error.response.data.detail };
+  }
+};

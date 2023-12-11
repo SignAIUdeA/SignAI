@@ -7,6 +7,7 @@ import { ROLES } from "@/constants/roles";
 import { useRouter } from "next/router";
 import { USER_VALID_ROUTES } from "@/constants/routes";
 import { useEffect } from "react";
+import Loader from "@/components/loader/Loader";
 
 interface Props {
   children: JSX.Element;
@@ -33,8 +34,8 @@ const Layout = ({ children }: Props) => {
 
   if (!isLogin)
     return (
-      <main>
-        <h1>Cargando...</h1>
+      <main className="h-[100vh] flex justify-center items-center">
+        <Loader />
       </main>
     );
 
