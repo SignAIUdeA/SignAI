@@ -1,13 +1,22 @@
-import { CardData, CardSignType } from "@/components/card/card.services";
+import { CardSignType } from "@/components/card/card.services";
 import FilterSection from "@/components/filter-section/FilterSection";
 import ListSigns from "@/components/list-signs/ListSigns";
+import { getSigns } from "@/functions/sign";
 import Layout from "@/layouts/Layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Inbox = () => {
   const [page, setPage] = useState<number>(1);
   const [maxPage, setMaxPage] = useState<number>(1);
-  const [listSigns, setListSigns] = useState<CardSignType[]>(CardData);
+  const [listSigns, setListSigns] = useState<CardSignType[]>([]);
+
+  useEffect(() => {
+    getSigns(page).then((res) => {
+      const { data } = res;
+      setListSigns(data.items);
+      setMaxPage(data.pages);
+    });
+  }, []);
 
   return (
     <Layout>
