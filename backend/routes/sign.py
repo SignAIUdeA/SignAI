@@ -12,6 +12,11 @@ from fastapi_pagination.links import Page
 router = APIRouter(prefix="/signs", tags=["Signs"])
 
 
+@router.get("/data-analysis", status_code=200)
+def get_data_analysis():
+    return sign.data_analysis()
+
+
 @router.get("/all", response_model=Page[ShowSign], status_code=status.HTTP_200_OK)
 def get_all_signs():
     list_signs = sign.get_all()
@@ -26,16 +31,6 @@ def get_sign(
     return sign.show(id, current_user)
 
 
-# @router.post("/", status_code=status.HTTP_201_CREATED, response_model=ShowSign)
-# def create_sign_and_upload_file(
-#     request: SignBase,
-#     file: UploadFile = File(...),
-#     current_user: CurrentUser = Depends(oauth2.get_current_user),
-# ):
-#     created_sign = sign.create(request, current_user)
-#     sign_id = created_sign.id
-#     sign.upload_file(sign_id, file, current_user)
-#     return sign.show(sign_id)
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def create_sign_and_upload_file(metadata: str = Form(...), file: UploadFile = File(...), current_user: CurrentUser = Depends(oauth2.get_current_user)):
     metadata = json.loads(metadata)
@@ -49,9 +44,8 @@ def create_sign_and_upload_file(metadata: str = Form(...), file: UploadFile = Fi
 def update_sign(
     id: str,
     request: EditSign,
-    current_user: CurrentUser = Depends(oauth2.get_current_user),
 ):
-    return sign.update(id, request, current_user)
+    return sign.update_label(id, request)
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
