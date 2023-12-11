@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 const transformar = (objetoOriginal: any): Modelo => {
   return {
+    id: objetoOriginal.id,
     name: objetoOriginal.name,
     description: objetoOriginal.description,
     category: objetoOriginal.category,
