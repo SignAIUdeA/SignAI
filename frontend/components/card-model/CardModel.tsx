@@ -11,6 +11,7 @@ interface Props {
 
 const CardModel = ({ modelInfo }: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const URL = "http://localhost:8000/model/file/";
 
   return (
     <>
@@ -28,7 +29,13 @@ const CardModel = ({ modelInfo }: Props) => {
             Ver Detalles
           </button>
           <button className={`${style.Btn} ${style.BtnDownload}`}>
-            Descargar
+            <a
+              href={`${URL}${modelInfo.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="archivo">
+              Descargar
+            </a>
           </button>
         </section>
       </article>
@@ -63,7 +70,13 @@ const CardModel = ({ modelInfo }: Props) => {
             </div>
             <button
               className={`${style.Btn} ${style.BtnDownload} ${style.BtnModal}`}>
-              Descargar
+              <a
+                href={`${URL}${modelInfo.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="archivo">
+                Descargar
+              </a>
             </button>
           </section>
         </Modal>
