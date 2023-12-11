@@ -2,18 +2,29 @@ from typing import List, Optional
 from pydantic import BaseModel
 from datetime import datetime
 
+
 class SignBase(BaseModel):
+    path_file: str
     label: str
-    fecha_creacion: datetime
-    fecha_modificacion: datetime
+    creation_date: datetime
+    role_user: str
+    upload_by: str
 
     class Config:
         orm_mode = True
 
-class ShowSign(BaseModel):
+
+class CreateSign(BaseModel):
     label: str
-    fecha_creacion: datetime
-    fecha_modificacion: datetime
+
+
+class ShowSign(BaseModel):
+    id: str
+    path_file: str
+    label: str
+    creation_date: datetime
+    role_user: str
+    upload_by: str
 
 
 class EditSign(BaseModel):

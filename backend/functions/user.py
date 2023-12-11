@@ -4,6 +4,23 @@ from schemas.user import *
 from db.mongo import db
 from security.hashing import Hash
 from functions.validations.validations import *
+from bson import ObjectId
+
+
+def build_user(user) -> UserAllInfomation:
+    return UserAllInfomation(
+        id=str(user["_id"]),
+        name=user["name"],
+        email=user["email"],
+        creation_date=datetime.strptime(
+            user["creation_date"], "%Y%m%d%H%M%S").strftime("%Y-%m-%d %H:%M:%S"),
+        modification_data=datetime.strptime(
+            user["modification_data"], "%Y%m%d%H%M%S").strftime("%Y-%m-%d %H:%M:%S"),
+        role=user["role"],
+        location=user["location"],
+        documentId=user["documentId"],
+        university=user["university"],
+    )
 
 
 def create(request: CreateUser):
@@ -68,6 +85,81 @@ def show(current_user: CurrentUser):
                 detail=f"User with the email {current_user['email']} is not available",
             )
         return ShowUser(**user)
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def show_all_users():
+    try:
+        users = db.users.find({})
+        list_users = [build_user(user) for user in users]
+        if not users:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Users are not available",
+            )
+        return list_users
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def update_credentials(current_user: CurrentUser, request: EditCredentials):
+    try:
+        user = db.users.find_one({"email": current_user['email']})
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"User with the email {current_user['email']} is not available",
+            )
+        new_password = Hash.bcrypt(request.new_password)
+        updated_user = db.users.update_one(
+            {"email": current_user["email"]}, {"$set": {"password": new_password}})
+
+        if updated_user.modified_count == 0:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error updating password"
+            )
+        return None
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def delete_user(id):
+    try:
+        user = db.users.find_one({"_id": ObjectId(id)})
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Usuario con el {id} no encontrado",
+            )
+        print(user)
+        result = db.users.delete_one({"_id": ObjectId(id)})
+        if result.deleted_count == 0:
+            raise HTTPException(
+                status_code=500, detail="Error deleting user")
+        return None
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def found_user(id):
+    try:
+        user_found = db.users.find_one({"_id": ObjectId(id)})
+        user = build_user(user_found)
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Usuario con el {id} no encontrado",
+            )
+        return user
     except PyMongoError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)

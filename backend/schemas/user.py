@@ -50,3 +50,19 @@ class EditUser(BaseModel):
     role: str
     fecha_modificacion: datetime
     signs: List[Sign] = []
+
+
+class EditCredentials(BaseModel):
+    new_password: str
+
+
+class UserAllInfomation(BaseModel):
+    id: str
+    name: str
+    email: str
+    creation_date: datetime
+    modification_data: datetime
+    role: str
+    location: str
+    documentId: str
+    university: str
