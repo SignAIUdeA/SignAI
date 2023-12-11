@@ -40,9 +40,19 @@
   color: white;
 }
 
+.Label {
+  padding: 0.1rem 1rem;
+  border: 1px solid var(--green-dark);
+  text-transform: lowercase;
+  border-radius: 1rem;
+  background-color: white;
+  color: var(--green-dark);
+}
+
 .Field {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .Icon {

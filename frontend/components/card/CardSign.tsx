@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import {
   MdDateRange,
   MdLabelOutline,
@@ -9,26 +8,47 @@ import {
 import style from "./card-sign.module.css";
 import TagPosition from "../tag-position/TagPosition";
 import Modal from "../modal/Modal";
-import Loader from "../loader/Loader";
+import { RoleType } from "@/types/types";
+import { formatDate } from "./card.services";
 
 interface CardProps {
-  name: string;
-  date: string;
+  id: string;
+  path_file: string;
   label: string;
+  creation_date: string; // Puedes cambiar este tipo a 'Date' si deseas trabajar con fechas en TypeScript
+  role_user: string;
+  upload_by: string;
 }
 
-const Card = ({ name, date, label }: CardProps) => {
+const Card = ({
+  id,
+  path_file,
+  label,
+  creation_date,
+  role_user,
+  upload_by,
+}: CardProps) => {
   const [showModalVideo, setShowModalVideo] = useState<boolean>(false);
   const [showModalForm, setShowModalForm] = useState<boolean>(false);
+  const [idVideo, setIdVideo] = useState<string>("");
 
   if (showModalVideo) {
+    console.log(
+      `http://127.0.0.1:8000/streaming/streaming/video/${idVideo}.mp4`
+    );
+
     return (
       <Modal setShowModal={setShowModalVideo} closeButton={true}>
-        <div className="p-4">
-          <div className="h-20">
-            <Loader />
-          </div>
-          Cargando
+        <div className="p-4 flex flex-col gap-4">
+          <h2 className="text-center">
+            Video <strong>{idVideo}</strong>
+          </h2>
+          <video width={360} controls muted>
+            <source
+              type="video/mp4"
+              src={`http://127.0.0.1:8000/streaming/video/${idVideo}.mp4`}
+            />
+          </video>
         </div>
       </Modal>
     );
@@ -44,23 +64,27 @@ const Card = ({ name, date, label }: CardProps) => {
         />
         <button
           className={style.IconWrapper}
-          onClick={() => setShowModalVideo(true)}>
+          onClick={() => {
+            setShowModalVideo(true);
+            setIdVideo(id);
+          }}>
           <MdPlayCircle className={style.IconPlay} />
         </button>
       </header>
       <section className={style.InfoCard}>
         <div className={style.Field}>
           <MdOutlinePermIdentity className={style.Icon} />
-          <span>{name}</span>
+          <span>{upload_by}</span>
         </div>
         <div className={style.Field}>
           <MdDateRange className={style.Icon} />
-          <span>{date}</span>
+          <span>{formatDate(creation_date)}</span>
         </div>
         <div className={style.Field}>
           <MdLabelOutline className={style.Icon} />
-          <TagPosition position="administrator" />
+          <span className={style.Label}>{label}</span>
         </div>
+        <TagPosition position={role_user as RoleType} />
         <button className={style.Btn}>Etiquetar</button>
       </section>
     </article>
