@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Header, Response
-from os import getcwd, path
+from fastapi.responses import StreamingResponse
+from os import getcwd
 
 router = APIRouter(prefix="/streaming", tags=["Streaming"])
 
@@ -9,29 +10,15 @@ current_directory = getcwd() + "/storage/videos/"
 
 
 @router.get("/video/{name}")
-def get_video(name: str, range: str = Header(None)):
+def get_video_streaming(name: str):
+    headers = {
+        'Content-Type': 'video/mp4',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+    }
     try:
-        if range is not None:
-            start, end = range.replace("bytes=", "").split("-")
-            start = int(start)
-            end = int(start) + PORTION_SIZE
-        else:
-            start = 0
-            end = PORTION_SIZE
-
-        print(current_directory)
-
-        with open(current_directory + name, "rb") as myfile:
-            myfile.seek(start)
-            data = myfile.read(end - start)
-            size_video = str(path.getsize(current_directory + name))
-
-            headers = {
-                'Content-Range': f'bytes {str(start)}-{str(end - 1)}/{size_video}',
-                'Accept-Ranges': 'bytes',
-                'Content-Type': 'video/mp4'
-            }
-
-            return Response(content=data, status_code=206, headers=headers, media_type="video/mp4")
+        vide_path = current_directory + name
+        return StreamingResponse(open(vide_path, "rb"), headers=headers)
     except Exception as e:
         return Response(content=str(e), status_code=500)

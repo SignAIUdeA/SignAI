@@ -22,6 +22,37 @@ def build_sign(sign) -> ShowSign:
     )
 
 
+def data_analysis():
+    try:
+        signs = db.signs.find({})
+        list_signs = [build_sign(sign) for sign in signs]
+        if not list_signs:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"No hay señas disponibles",
+            )
+        number_signs = len(list_signs)
+        # Crear un diccionario para contar la frecuencia de cada etiqueta
+        label_frequency = {}
+
+        # Contar la frecuencia de cada etiqueta en los datos
+        for item in list_signs:
+            label = item.label
+            if label in label_frequency:
+                label_frequency[label] += 1
+            else:
+                label_frequency[label] = 1
+
+        return {
+            "number_signs": number_signs,
+            "labels_info": label_frequency
+        }
+    except PyMongoError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
 def show(id: str):
     sign = db.signs.find_one({"_id": ObjectId(id)})
     if not sign:
@@ -50,23 +81,23 @@ def get_all():
         )
 
 
-# def create(request: SignBase, current_user: CurrentUser):
-#     try:
-#         new_sign = dict(
-#             user_email= current_user.email,
-#             label=request.label,
-#             fecha_creacion=datetime.now().strftime("%Y%m%d%H%M%S"),
-#             fecha_modificacion=datetime.now().strftime("%Y%m%d%H%M%S"),
-#         )
-#         result = db.signs.insert_one(new_sign)
-#         new_sign = db.signs.find_one({"_id": result.inserted_id})
-#         new_sign["id"] = str(new_sign.pop("_id"))
-#         return new_sign
+def update_label(id: str, new_label: str):
+    try:
+        result = db.signs.update_one(
+            {"_id": ObjectId(id)}, {"$set": {"label": new_label}}
+        )
+        if not result.modified_count:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail=f"Seña con id {id} no encontrada"
+            )
+        else:
+            updated_sign = db.signs.find_one({"_id": ObjectId(id)})
+            return updated_sign
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
 
-#     except PyMongoError as e:
-#         raise HTTPException(
-#             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-#         )
 
 def create(metadata: CreateSign, current_user: CurrentUser, file: UploadFile):
     try:
@@ -107,33 +138,6 @@ def rename_file(file_name: str, file: UploadFile) -> UploadFile:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error al renombrar el archivo"
         )
-
-
-# def upload_file(file_id, file, current_user):
-#     user_email = current_user.email
-#     try:
-#         img_path = f"./data/{user_email}/"
-#         try:
-#             os.mkdir(img_path)
-#         except:
-#             pass
-#         contents = file.file.read()
-#         img_name = datetime.now().strftime("%Y%m%d%H%M%S")
-#         with open(img_path + f"{img_name}.jpg", "wb") as f:
-#             f.write(contents)
-#     except Exception:
-#         return {"message": "There was an error uploading the file"}
-#     finally:
-#         file.file.close()
-#     db.logs.insert_one(
-#         dict(
-#             type_event="file_uploaded",
-#             date=datetime.now().strftime("%Y%m%d%H%M%S"),
-#             description=f"El usuario creó una seña: {img_name}",
-#             user=user_email,
-#         )
-#     )
-#    return {"message": f"Successfully uploaded {file.filename}"}
 
 
 def upload_file(file: UploadFile):

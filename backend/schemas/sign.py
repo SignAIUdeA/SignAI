@@ -29,4 +29,4 @@ class ShowSign(BaseModel):
 
 class EditSign(BaseModel):
     label: str
-    fecha_modificacion: datetime
+    # fecha_modificacion: datetime

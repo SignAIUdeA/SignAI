@@ -7,8 +7,8 @@ __pycache__/
 *.so
 
 # Ignorar la carpeta que contine los videos y modelos
-storage/models/*
-storage/videos/*
+# storage/models/*
+# storage/videos/
 
 # VsCode
 .vscode
