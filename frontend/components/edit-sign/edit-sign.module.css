@@ -1,0 +1,59 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--grey-dark);
+  font-size: 0.9rem;
+  width: 100%;
+  min-width: 300px;
+}
+
+.FormTitle {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: var(--font-bold);
+  color: var(--green-dark);
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--grey-dark);
+  border-radius: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input:focus {
+  border-color: var(--green-mid);
+}
+
+.WrapperBtns {
+  @apply flex justify-between gap-4;
+}
+
+.Btn {
+  @apply rounded-3xl w-[100%] p-2;
+}
+
+.BtnCancel {
+  color: var(--grey-light);
+  background-color: transparent;
+  border: 1px solid var(--grey-light);
+  transition: all 0.3s ease-in-out;
+}
+
+.BtnCancel:hover {
+  background-color: var(--grey-light);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.BtnConfirm {
+  color: var(--white);
+  background: var(--bg-main);
+  transition: all 0.3s ease-in-out;
+}
+
+.BtnConfirm:hover {
+  box-shadow: var(--shadow);
+}
