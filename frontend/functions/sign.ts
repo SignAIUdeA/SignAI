@@ -45,7 +45,7 @@ export const createNewSign = async (
       message: "Se ha creado la seña correctamente",
     };
   } catch (error: any) {
-    return { ok: false, message: error.response.data.detail };
+    return { ok: false, message: error.message };
   }
 };
 
@@ -56,9 +56,11 @@ export const getSigns = async (
   try {
     const response = await instance.get(`/signs/all?page=${page}&size=${size}`);
     const data = response.data;
+    console.log(data);
+
     return { ok: true, message: "¡Señas obtenidas exitosamente!", data };
   } catch (error: any) {
-    return { ok: false, message: error.response.data.detail };
+    return { ok: false, message: error.message };
   }
 };
 
@@ -68,6 +70,35 @@ export const getInfoSigs = async (): Promise<RequestResponse> => {
     const data = response.data;
     return { ok: true, message: "¡Información obtenida exitosamente!", data };
   } catch (error: any) {
-    return { ok: false, message: error.response.data.detail };
+    return { ok: false, message: error.message };
+  }
+};
+
+export const changeSignLabel = async (
+  id: string,
+  newLabel: string
+): Promise<RequestResponse> => {
+  try {
+    const response = await instance.put(`/signs/${id}`, { label: newLabel });
+    const data = response.data;
+    return {
+      ok: true,
+      message: "¡La etiqueta ha sido cambiada exitosamente!",
+    };
+  } catch (error: any) {
+    return { ok: false, message: error.message };
+  }
+};
+
+export const approveSign = async (id: string): Promise<RequestResponse> => {
+  try {
+    const response = await instance.put(`/signs/approve/${id}`);
+    const data = response.data;
+    return {
+      ok: true,
+      message: "¡La etiqueta ha sido aprovada exitosamente!",
+    };
+  } catch (error: any) {
+    return { ok: false, message: error.message };
   }
 };
