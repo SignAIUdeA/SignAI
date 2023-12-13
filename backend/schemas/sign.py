@@ -9,6 +9,7 @@ class SignBase(BaseModel):
     creation_date: datetime
     role_user: str
     upload_by: str
+    approve: bool
 
     class Config:
         orm_mode = True
@@ -25,8 +26,8 @@ class ShowSign(BaseModel):
     creation_date: datetime
     role_user: str
     upload_by: str
+    approve: bool
 
 
 class EditSign(BaseModel):
     label: str
-    # fecha_modificacion: datetime

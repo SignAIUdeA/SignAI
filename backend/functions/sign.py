@@ -19,6 +19,7 @@ def build_sign(sign) -> ShowSign:
         role_user=sign["role_user"],
         upload_by=sign["upload_by"],
         path_file=sign["path_file"],
+        approve=sign["approve"]
     )
 
 
@@ -69,11 +70,6 @@ def get_all():
     try:
         signs = db.signs.find({})
         list_signs = [build_sign(sign) for sign in signs]
-        if not list_signs:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"No hay señas disponibles",
-            )
         return list_signs
     except PyMongoError as e:
         raise HTTPException(
@@ -84,7 +80,8 @@ def get_all():
 def update_label(id: str, new_label: str):
     try:
         result = db.signs.update_one(
-            {"_id": ObjectId(id)}, {"$set": {"label": new_label}}
+            {"_id": ObjectId(id)}, {
+                "$set": {"label": new_label, "approve": True}}
         )
         if not result.modified_count:
             raise HTTPException(
@@ -92,8 +89,26 @@ def update_label(id: str, new_label: str):
             )
         else:
             updated_sign = db.signs.find_one({"_id": ObjectId(id)})
-            return updated_sign
+            return build_sign(updated_sign)
     except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def approve_sign(id: str):
+    try:
+        result = db.signs.update_one(
+            {"_id": ObjectId(id)}, {"$set": {"approve": True}}
+        )
+        if not result.modified_count:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail=f"Seña con id {id} no encontrada"
+            )
+        else:
+            updated_sign = db.signs.find_one({"_id": ObjectId(id)})
+            return build_sign(updated_sign)
+    except PyMongoError as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
@@ -102,11 +117,16 @@ def update_label(id: str, new_label: str):
 def create(metadata: CreateSign, current_user: CurrentUser, file: UploadFile):
     try:
         user_info = db.users.find_one({"email": current_user["email"]})
+        is_approved = False
+        if user_info["role"] == "professional":
+            is_approved = True
+        label_transform = metadata["label"].lower()
         new_sign = dict(
-            label=metadata["label"],
+            label=label_transform,
             creation_date=datetime.now().strftime("%Y%m%d%H%M%S"),
             role_user=user_info["role"],
             upload_by=user_info["name"],
+            approve=is_approved,
             path_file="",
         )
         result_create = db.signs.insert_one(new_sign)
