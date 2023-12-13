@@ -40,12 +40,20 @@ def create_sign_and_upload_file(metadata: str = Form(...), file: UploadFile = Fi
     return sign.create(create_sign, current_user, file)
 
 
-@router.put("/{id}", response_model=ShowSign, status_code=status.HTTP_200_OK)
+@router.put("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def update_sign(
     id: str,
     request: EditSign,
 ):
-    return sign.update_label(id, request)
+    return sign.update_label(id, request.label)
+
+
+@router.put("/approve/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def approve_sign(
+    id: str
+):
+    print(id)
+    return sign.approve_sign(id)
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
