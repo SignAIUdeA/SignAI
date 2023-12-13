@@ -165,7 +165,7 @@ const FormModel = ({ file, setShowModal }: Props) => {
           created_by: nameUser || "",
           creation_date: "",
         };
-        createNewModel(newModelData);
+        createNewModel(JSON.stringify(newModelData), file);
         setShowModalSuccesfully(true);
         let timeout: ReturnType<typeof setTimeout>;
         timeout = setTimeout(() => {

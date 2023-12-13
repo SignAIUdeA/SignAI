@@ -11,10 +11,13 @@ const ListSigns = ({ listSigns }: Props) => {
     <section className={styles.Wrapper}>
       {listSigns.map((item, index) => (
         <Card
-          key={index}
-          name={item.name}
-          date={item.date}
+          id={item.id}
+          key={item.id}
+          upload_by={item.upload_by}
+          creation_date={item.creation_date}
           label={item.label}
+          path_file={item.path_file}
+          role_user={item.role_user}
         />
       ))}
     </section>

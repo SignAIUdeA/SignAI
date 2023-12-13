@@ -90,6 +90,16 @@ const FormAddUser = ({ className = "" }: Props) => {
               id="name"
             />
           </label>
+          <label htmlFor="lastName">
+            Apellidos
+            <input
+              onChange={handleChange}
+              className={styles.Input}
+              type="text"
+              name="lastName"
+              id="lastName"
+            />
+          </label>
           <label htmlFor="username">
             Usuario
             <input
@@ -118,17 +128,6 @@ const FormAddUser = ({ className = "" }: Props) => {
               type="text"
               name="location"
               id="location"
-            />
-          </label>
-
-          <label htmlFor="lastName">
-            Apellidos
-            <input
-              onChange={handleChange}
-              className={styles.Input}
-              type="text"
-              name="lastName"
-              id="lastName"
             />
           </label>
           <label htmlFor="email">

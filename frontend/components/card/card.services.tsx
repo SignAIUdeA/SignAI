@@ -1,63 +1,19 @@
 export interface CardSignType {
-  name: string;
-  date: string;
+  id: string;
+  path_file: string;
   label: string;
-  image: string;
+  creation_date: string;
+  role_user: string;
+  upload_by: string;
+  approve: boolean;
 }
 
-export const CardData: CardSignType[] = [
-  {
-    name: "Santiago Bedoya",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Andrés Quintero",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Jose Waldo",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Santiago Bedoya",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Andrés Quintero",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Andrés Quintero",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Andrés Quintero",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Andrés Quintero",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-  {
-    name: "Jose Waldo",
-    date: "6/09/2023",
-    label: "hola",
-    image: "/sign.png",
-  },
-];
+export const formatDate = (dateString: string): string => {
+  const formattedDate = new Date(dateString);
+
+  const day = formattedDate.getDate().toString().padStart(2, "0");
+  const month = (formattedDate.getMonth() + 1).toString().padStart(2, "0");
+  const year = formattedDate.getFullYear();
+
+  return `${day}/${month}/${year}`;
+};

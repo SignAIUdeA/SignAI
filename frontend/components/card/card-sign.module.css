@@ -34,15 +34,59 @@
   transform: translate(-50%, -50%);
 }
 
+.Tooltip::before,
+.Tooltip::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(63, 63, 63);
+  transition: opacity 500ms ease-in;
+  opacity: 0;
+  content: "";
+}
+
+.Tooltip::before {
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+}
+
+.Tooltip::after {
+  font-size: 0.7rem;
+  bottom: -30px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: rgb(221, 221, 221);
+  font-weight: var(--font-bold);
+  content: "Ver vídeo completo y/o aprobar seña";
+  text-wrap: nowrap;
+}
+
+.Tooltip:hover::before,
+.Tooltip:hover::after {
+  opacity: 1;
+}
+
 .IconPlay {
   width: 2rem;
   height: 2rem;
   color: white;
 }
 
+.Label {
+  padding: 0.1rem 1rem;
+  border: 1px solid var(--green-dark);
+  text-transform: lowercase;
+  border-radius: 1rem;
+  background-color: white;
+  color: var(--green-dark);
+}
+
 .Field {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .Icon {
@@ -57,4 +101,13 @@
   background: var(--bg-main);
   font-weight: bold;
   color: white;
+  transition: all 0.1s ease-in-out;
+}
+
+.Btn:hover {
+  box-shadow: var(--shadow);
+}
+
+.BtnAccept {
+  background: var(--bg-item-navbar);
 }
