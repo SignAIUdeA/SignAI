@@ -13,8 +13,13 @@ const Inbox = () => {
   useEffect(() => {
     getSigns(page).then((res) => {
       const { data } = res;
-      setListSigns(data.items);
-      setMaxPage(data.pages);
+      const list: CardSignType[] = data.items;
+      console.log(list);
+      const newList = list.filter(
+        (item) => item.role_user !== "professional" && item.approve === false
+      );
+      setListSigns(newList);
+      setMaxPage(data?.pages);
     });
   }, []);
 
@@ -22,7 +27,13 @@ const Inbox = () => {
     <Layout>
       <div className="flex flex-col w-[100%] h-[100%] px-[2rem] py-[1.5rem]">
         <FilterSection page={page} setPage={setPage} maxPages={maxPage} />
-        <ListSigns listSigns={listSigns} />
+        {listSigns.length === 0 ? (
+          <p className="text-lg text-gray-800">
+            No hay señas por aprobar o etiquetar
+          </p>
+        ) : (
+          <ListSigns listSigns={listSigns} />
+        )}
       </div>
     </Layout>
   );
