@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Credentials, AuthResponse, UserInfo } from "@/types/types";
+import { log } from "console";
 
 interface ResponseLogin {
   ok: boolean;
@@ -78,7 +79,8 @@ export const createNewUser = async (newUser: any) => {
     const data = response.data;
     return { ok: true, message: "¡El usuario se ha creado exitosamente!" };
   } catch (error: any) {
-    return { ok: false, message: error.response.data.detail };
+    console.log(error);
+    return { ok: false, message: error.message };
   }
 };
 
@@ -105,6 +107,6 @@ export const updatePassword = async (
       message: "¡Las credenciales se han modificado exitosamente!",
     };
   } catch (error: any) {
-    return { ok: false, message: error.response.data.detail };
+    return { ok: false, message: error.message };
   }
 };
