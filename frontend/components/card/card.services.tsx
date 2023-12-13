@@ -5,6 +5,7 @@ export interface CardSignType {
   creation_date: string;
   role_user: string;
   upload_by: string;
+  approve: boolean;
 }
 
 export const formatDate = (dateString: string): string => {
